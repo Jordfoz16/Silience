@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  Silience
 //
 //  Created by Jordan Foster on 19/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
