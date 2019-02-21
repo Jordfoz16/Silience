@@ -12,8 +12,8 @@ class NewTaskViewController: UIViewController {
     
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var timeTextBox: UITextField!
-    @IBOutlet weak var dateTextBox: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var startDate: UITextField!
+    @IBOutlet weak var endDate: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +21,10 @@ class NewTaskViewController: UIViewController {
         nameTextBox.becomeFirstResponder()
     }
     
-    @IBAction func editDate(_ sender: Any) {
-        datePicker.isHidden = false
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameTextBox.resignFirstResponder()
-        if(!datePicker.isHidden){
-            datePicker.isHidden = true
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy"
-            let date = formatter.string(from: datePicker.date)
-            
-            dateTextBox.text = date
-        }
+        timeTextBox.resignFirstResponder()
+        startDate.resignFirstResponder()
+        endDate.resignFirstResponder()
     }
 }

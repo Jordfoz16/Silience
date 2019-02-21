@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170D45B7221D809100A278F3 /* Silience.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Silience.entitlements; sourceTree = "<group>"; };
 		17D281E7221C63D000F1D86F /* Silience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Silience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D281EA221C63D000F1D86F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D281EC221C63D000F1D86F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +40,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		170D45B6221D7EAB00A278F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17D281EC221C63D000F1D86F /* MainViewController.swift */,
+				17D281EE221C63D000F1D86F /* CalendarViewController.swift */,
+				17D281FE221C72E800F1D86F /* NewTaskViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		17D281DE221C63D000F1D86F = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +69,13 @@
 		17D281E9221C63D000F1D86F /* Silience */ = {
 			isa = PBXGroup;
 			children = (
-				17D281EA221C63D000F1D86F /* AppDelegate.swift */,
-				17D281EC221C63D000F1D86F /* MainViewController.swift */,
-				17D281EE221C63D000F1D86F /* CalendarViewController.swift */,
+				170D45B7221D809100A278F3 /* Silience.entitlements */,
 				17D281F0221C63D000F1D86F /* Main.storyboard */,
+				170D45B6221D7EAB00A278F3 /* Controllers */,
+				17D281EA221C63D000F1D86F /* AppDelegate.swift */,
 				17D281F3221C63D100F1D86F /* Assets.xcassets */,
 				17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */,
 				17D281F8221C63D100F1D86F /* Info.plist */,
-				17D281FE221C72E800F1D86F /* NewTaskViewController.swift */,
 			);
 			path = Silience;
 			sourceTree = "<group>";
@@ -102,6 +112,11 @@
 				TargetAttributes = {
 					17D281E6221C63D000F1D86F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -291,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G5A545AH8G;
 				INFOPLIST_FILE = Silience/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,6 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G5A545AH8G;
 				INFOPLIST_FILE = Silience/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
