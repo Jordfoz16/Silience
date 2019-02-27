@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func decodeJSON(sender: Any) {
+    @IBAction func decodeJSON(_ sender: Any) {
         let jsonParser = ParseJSON()
         let fileManager = File()
         

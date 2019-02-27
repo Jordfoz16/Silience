@@ -66,15 +66,15 @@ class NewTaskViewController: UIViewController {
         
     }
     
-    @IBAction func changedHours(sender: Any) {
+    @IBAction func changedHours(_ sender: Any) {
         updateWorkLoad()
     }
     
-    @IBAction func changedStartDate(sender: Any) {
+    @IBAction func changeStartDate(_ sender: Any) {
         updateWorkLoad()
     }
     
-    @IBAction func changedEndDate(sender: Any) {
+    @IBAction func changeEndDate(_ sender: Any) {
         updateWorkLoad()
     }
     
