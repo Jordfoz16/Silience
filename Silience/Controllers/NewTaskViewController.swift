@@ -78,6 +78,7 @@ class NewTaskViewController: UIViewController {
         updateWorkLoad()
     }
     
+    //Calculates the amount of work a day needed to complete a task
     func updateWorkLoad(){
         //Check data has been entered
         if(timeTextBox.text == "" || startDateTextBox.text == "" || endDateTextBox.text == ""){
@@ -98,22 +99,22 @@ class NewTaskViewController: UIViewController {
         
     }
     
+    //Add a new task to the JSON file
     @IBAction func addNewTask(sender: Any) {
         
-        let fileManager = File()
-        let jsonParser = ParseJSON()
-        
+        //Getting infomation from the text box
         let name = nameTextBox.text
         let startDate = startDateTextBox.text
         let endDate = endDateTextBox.text
         let hours = timeTextBox.text
         let description = "None"
         
+        //Creating a new task object
         let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description)
         
-        jsonParser.addTask(task: newTask)
-        jsonParser.encodeJSON()
+        let taskManager = TaskManager()
+        taskManager.add(task: newTask)
+        taskManager.save()
         
-        fileManager.writeFile(writeString: jsonParser.jsonToString(), fileName: "Tasks", fileExtension: "json")
     }
 }

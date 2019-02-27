@@ -10,58 +10,39 @@ import Foundation
 
 class ParseJSON {
     
-    /*
-     Redo:
-     
-     Encoding
-     Decoding
-     Adding Task
-     
-     Tasks Needs Bool Finished
-     Description
-     */
-    
-    private var encodedData: Data = Data()
-    
-    public var arrayJSON = [Task] ()
-    
-    func addTask(task: Task){
-        let fileManager = File()
-        
-        decodeJSON(jsonString: fileManager.readFile(fileName: "Tasks", fileExtension: "json"))
-        
-        arrayJSON.append(task)
-    }
-    
-    func encodeJSON(){
+    //Encodes the array into JSON format
+    func encodeJSON(data: [Task]) -> String{
         let encoder = JSONEncoder()
+        var encodedData: Data = Data()
         
         do{
-            encodedData = try encoder.encode(arrayJSON)
-            print("JSON Encoded")
+            encodedData = try encoder.encode(data)
         } catch let error{
             print(error as Any)
         }
+        
+        return String(data: encodedData, encoding: .utf8)!
     }
     
-    func decodeJSON(jsonString: String){
+    //Decodes a JSON formatted string into an array
+    func decodeJSON(jsonString: String) -> Any{
         //Converts a json string into an array of tasks
         let jsonData = jsonString.data(using: .utf8)!
-        decodeJSON(jsonData: jsonData)
+        return decodeJSON(jsonData: jsonData)
     }
     
-    func decodeJSON(jsonData: Data){
-        //Converts a json data into an array of tasks
+    //Decodes JSON formatted data into an array
+    func decodeJSON(jsonData: Data) -> Any{
         let decoder = JSONDecoder()
+        var data = [Any]()
         
         do{
-            arrayJSON = try decoder.decode([Task].self, from: jsonData)
+            //Put the data into an array of tasks
+            data = try decoder.decode([Task].self, from: jsonData)
         } catch let error{
             print(error as Any)
         }
-    }
-    
-    func jsonToString() -> String{
-        return String(data: encodedData, encoding: .utf8)!
+        
+        return data
     }
 }
