@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 class MainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,8 +25,25 @@ class MainViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = "Weekly Staff Meeting"
         content.body = "Every Tuesday at 2pm"
+        
+        let fileManager = File()
+        
+        print(fileManager.checkFile(fileName: "Tasks", fileExtension: "json"))
+        
+        if(fileManager.checkFile(fileName: "Tasks", fileExtension: "json")){
+            fileManager.writeFile(writeString: "", fileName: "Tasks", fileExtension: "json")
+            print("File Created")
+        }
     }
-
-
+    
+    @IBAction func decodeJSON(sender: Any) {
+        let jsonParser = ParseJSON()
+        let fileManager = File()
+        
+        jsonParser.decodeJSON(jsonString: fileManager.readFile(fileName: "Tasks", fileExtension: "json"))
+        
+        for i in jsonParser.arrayJSON{
+            print(i.name)
+        }
+    }
 }
-
