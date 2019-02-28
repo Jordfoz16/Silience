@@ -24,6 +24,19 @@ class ParseJSON {
         return String(data: encodedData, encoding: .utf8)!
     }
     
+    func encodeJSON(data: [String]) -> String{
+        let encoder = JSONEncoder()
+        var encodedData: Data = Data()
+        
+        do{
+            encodedData = try encoder.encode(data)
+        } catch let error{
+            print(error as Any)
+        }
+        
+        return String(data: encodedData, encoding: .utf8)!
+    }
+    
     //Decodes a JSON formatted string into an array
     func decodeJSON(jsonString: String) -> Any{
         //Converts a json string into an array of tasks

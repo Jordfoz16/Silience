@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1727A1852227EA6A00C04884 /* DayWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727A1842227EA6A00C04884 /* DayWord.swift */; };
 		1744D439221F2E11000D7F10 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744D438221F2E11000D7F10 /* File.swift */; };
 		17ACC6582225AC1400EC8FC2 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ACC6572225AC1400EC8FC2 /* TaskManager.swift */; };
 		17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD54202220236B00AC7711 /* ParseJSON.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		170D45B7221D809100A278F3 /* Silience.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Silience.entitlements; sourceTree = "<group>"; };
+		1727A1842227EA6A00C04884 /* DayWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWord.swift; sourceTree = "<group>"; };
 		1744D438221F2E11000D7F10 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		17ACC6572225AC1400EC8FC2 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		17BD54202220236B00AC7711 /* ParseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseJSON.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				1744D438221F2E11000D7F10 /* File.swift */,
 				17BD54202220236B00AC7711 /* ParseJSON.swift */,
 				17ACC6572225AC1400EC8FC2 /* TaskManager.swift */,
+				1727A1842227EA6A00C04884 /* DayWord.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				17D281EB221C63D000F1D86F /* AppDelegate.swift in Sources */,
 				17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */,
 				17ACC6582225AC1400EC8FC2 /* TaskManager.swift in Sources */,
+				1727A1852227EA6A00C04884 /* DayWord.swift in Sources */,
 				17D281ED221C63D000F1D86F /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

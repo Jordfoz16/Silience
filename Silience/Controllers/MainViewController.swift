@@ -12,6 +12,9 @@ import UserNotifications
 class MainViewController: UIViewController {
     
     let taskManager = TaskManager()
+    let dayWord = DayWord()
+    
+    @IBOutlet weak var wordLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +31,11 @@ class MainViewController: UIViewController {
         content.title = "Weekly Staff Meeting"
         content.body = "Every Tuesday at 2pm"
         
+        wordLabel.text = dayWord.getRandomWord()
+        
     }
     
     @IBAction func decodeJSON(_ sender: Any) {
-        print(TaskManager.taskArray)
+        print(DayWord.wordsArray)
     }
 }

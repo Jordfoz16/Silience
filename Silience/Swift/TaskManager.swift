@@ -22,13 +22,16 @@ class TaskManager {
     
     static var taskArray = [Task]()
     
+    let fileName = "Task"
+    let fileExtension = "json"
+    
     init(){
         
         //Checks if the file exists, else it will load the file into memory
-        if(TaskManager.fileManager.checkFile(fileName: "Task", fileExtension: "json")){
-            TaskManager.fileManager.writeFile(writeString: "", fileName: "Task", fileExtension: "json")
+        if(TaskManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
+            TaskManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
         }else{
-            let file = TaskManager.fileManager.readFile(fileName: "Task", fileExtension: "json")
+            let file = TaskManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
             if(!file.isEmpty){
                 TaskManager.taskArray = TaskManager.jsonParser.decodeJSON(jsonString: file) as! [Task]
             }
@@ -46,11 +49,11 @@ class TaskManager {
     func save(){
         let jsonData = TaskManager.jsonParser.encodeJSON(data: TaskManager.taskArray)
         
-        TaskManager.fileManager.writeFile(writeString: jsonData, fileName: "Task", fileExtension: "json")
+        TaskManager.fileManager.writeFile(writeString: jsonData, fileName: fileName, fileExtension: fileExtension)
     }
     
     func clear(){
         TaskManager.taskArray.removeAll()
-        TaskManager.fileManager.writeFile(writeString: "", fileName: "Task", fileExtension: "json")
+        TaskManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
     }
 }
