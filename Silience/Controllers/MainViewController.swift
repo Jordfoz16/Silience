@@ -38,4 +38,8 @@ class MainViewController: UIViewController {
     @IBAction func decodeJSON(_ sender: Any) {
         print(DayWord.wordsArray)
     }
+    
+    @IBAction func decodeTaskJSON(_ sender: Any) {
+        print(TaskManager.taskArray)
+    }
 }

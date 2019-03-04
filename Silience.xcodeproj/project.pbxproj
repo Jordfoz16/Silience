@@ -17,9 +17,11 @@
 		17D281F4221C63D100F1D86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F3221C63D100F1D86F /* Assets.xcassets */; };
 		17D281F7221C63D100F1D86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */; };
 		17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281FE221C72E800F1D86F /* NewTaskViewController.swift */; };
+		414A5849A0ABE358080C228A /* Pods_Silience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Silience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170D45B7221D809100A278F3 /* Silience.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Silience.entitlements; sourceTree = "<group>"; };
 		1727A1842227EA6A00C04884 /* DayWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWord.swift; sourceTree = "<group>"; };
 		1744D438221F2E11000D7F10 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -33,6 +35,8 @@
 		17D281F6221C63D100F1D86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D281F8221C63D100F1D86F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D281FE221C72E800F1D86F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.debug.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.debug.xcconfig"; sourceTree = "<group>"; };
+		E1EDD71E578DEB8793028E97 /* Pods-Silience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.release.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,12 +44,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				414A5849A0ABE358080C228A /* Pods_Silience.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		018B76754C787BB95B4E181E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		170D45B6221D7EAB00A278F3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +84,8 @@
 			children = (
 				17D281E9221C63D000F1D86F /* Silience */,
 				17D281E8221C63D000F1D86F /* Products */,
+				60655F5870F8B20191216216 /* Pods */,
+				018B76754C787BB95B4E181E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				1744D433221F28BF000D7F10 /* Swift */,
-				170D45B7221D809100A278F3 /* Silience.entitlements */,
 				17D281F0221C63D000F1D86F /* Main.storyboard */,
+				170D45B7221D809100A278F3 /* Silience.entitlements */,
 				170D45B6221D7EAB00A278F3 /* Controllers */,
 				17D281EA221C63D000F1D86F /* AppDelegate.swift */,
 				17D281F3221C63D100F1D86F /* Assets.xcassets */,
@@ -97,6 +112,16 @@
 			path = Silience;
 			sourceTree = "<group>";
 		};
+		60655F5870F8B20191216216 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */,
+				E1EDD71E578DEB8793028E97 /* Pods-Silience.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17D281FB221C63D100F1D86F /* Build configuration list for PBXNativeTarget "Silience" */;
 			buildPhases = (
+				7032AD1FD6B810F726BAA830 /* [CP] Check Pods Manifest.lock */,
 				17D281E3221C63D000F1D86F /* Sources */,
 				17D281E4221C63D000F1D86F /* Frameworks */,
 				17D281E5221C63D000F1D86F /* Resources */,
+				F55BA2BF46FAC9750678CE0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +197,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7032AD1FD6B810F726BAA830 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Silience-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F55BA2BF46FAC9750678CE0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Silience/Pods-Silience-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Silience/Pods-Silience-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17D281E3221C63D000F1D86F /* Sources */ = {
@@ -326,6 +400,7 @@
 		};
 		17D281FC221C63D100F1D86F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -345,6 +420,7 @@
 		};
 		17D281FD221C63D100F1D86F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1EDD71E578DEB8793028E97 /* Pods-Silience.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
