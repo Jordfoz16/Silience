@@ -12,7 +12,7 @@ import UserNotifications
 class MainViewController: UIViewController {
     
     let taskManager = TaskManager()
-    let dayWord = DayWord()
+    let dayWord = DailyWords()
     
     @IBOutlet weak var wordLabel: UILabel!
     
@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func decodeJSON(_ sender: Any) {
-        print(DayWord.wordsArray)
+        print(DailyWords.wordsArray)
     }
     
     @IBAction func decodeTaskJSON(_ sender: Any) {

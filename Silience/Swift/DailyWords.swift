@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DayWord{
+class DailyWords{
     
     static let fileManager = File()
     static let jsonParser = ParseJSON()
@@ -29,7 +29,7 @@ class DayWord{
         }else{
             let file = TaskManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
             if(!file.isEmpty){
-                DayWord.wordsArray = DayWord.jsonParser.decodeJSON(jsonString: file) as! [String]
+                DailyWords.wordsArray = DailyWords.jsonParser.decodeJSON(jsonString: file) as! [String]
             }else{
                 loadDefault()
             }
@@ -56,17 +56,17 @@ class DayWord{
     }
     
     func add(word: String){
-        DayWord.wordsArray.append(word)
+        DailyWords.wordsArray.append(word)
     }
     
     func save(){
-        let jsonData = DayWord.jsonParser.encodeJSON(data: DayWord.wordsArray)
+        let jsonData = DailyWords.jsonParser.encodeJSON(data: DailyWords.wordsArray)
         
-        DayWord.fileManager.writeFile(writeString: jsonData, fileName: fileName, fileExtension: fileExtension)
+        DailyWords.fileManager.writeFile(writeString: jsonData, fileName: fileName, fileExtension: fileExtension)
     }
     
     func clear(){
-        DayWord.wordsArray.removeAll()
-        DayWord.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
+        DailyWords.wordsArray.removeAll()
+        DailyWords.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
     }
 }

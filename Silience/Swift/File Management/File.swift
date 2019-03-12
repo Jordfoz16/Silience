@@ -24,7 +24,7 @@ class File {
     }
     
     //Writes a file to the drive
-    func writeFile(writeString: String, fileName: String, fileExtension: String = "txt") {
+    func writeFile(writeString: String, fileName: String, fileExtension: String) {
         let url = fileURL(fileName: fileName, fileExtension: fileExtension)
         do{
             try writeString.write(to: url, atomically: true, encoding: .utf8)
@@ -34,7 +34,7 @@ class File {
     }
     
     //Reads a file and returns the data as a string
-    func readFile(fileName: String, fileExtension: String = "txt") -> String {
+    func readFile(fileName: String, fileExtension: String) -> String {
         var readString = ""
         let url = fileURL(fileName: fileName, fileExtension: fileExtension)
         do{
@@ -51,7 +51,6 @@ class File {
         do{
             check = try fileURL(fileName: fileName, fileExtension: fileExtension).checkPromisedItemIsReachable()
         }catch{}
-        
         isCreated = check
         return !check
     }

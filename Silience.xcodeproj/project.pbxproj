@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1727A1852227EA6A00C04884 /* DayWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727A1842227EA6A00C04884 /* DayWord.swift */; };
+		1727A1852227EA6A00C04884 /* DailyWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727A1842227EA6A00C04884 /* DailyWords.swift */; };
 		1744D439221F2E11000D7F10 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744D438221F2E11000D7F10 /* File.swift */; };
 		17ACC6582225AC1400EC8FC2 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ACC6572225AC1400EC8FC2 /* TaskManager.swift */; };
 		17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD54202220236B00AC7711 /* ParseJSON.swift */; };
@@ -17,13 +17,15 @@
 		17D281F4221C63D100F1D86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F3221C63D100F1D86F /* Assets.xcassets */; };
 		17D281F7221C63D100F1D86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */; };
 		17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281FE221C72E800F1D86F /* NewTaskViewController.swift */; };
+		17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906B2237E03D00FC543D /* CalendarCell.swift */; };
+		17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */; };
 		414A5849A0ABE358080C228A /* Pods_Silience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Silience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170D45B7221D809100A278F3 /* Silience.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Silience.entitlements; sourceTree = "<group>"; };
-		1727A1842227EA6A00C04884 /* DayWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWord.swift; sourceTree = "<group>"; };
+		1727A1842227EA6A00C04884 /* DailyWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWords.swift; sourceTree = "<group>"; };
 		1744D438221F2E11000D7F10 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		17ACC6572225AC1400EC8FC2 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		17BD54202220236B00AC7711 /* ParseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseJSON.swift; sourceTree = "<group>"; };
@@ -35,6 +37,8 @@
 		17D281F6221C63D100F1D86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D281F8221C63D100F1D86F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D281FE221C72E800F1D86F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		17E1906B2237E03D00FC543D /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarControllerView.swift; sourceTree = "<group>"; };
 		955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.debug.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.debug.xcconfig"; sourceTree = "<group>"; };
 		E1EDD71E578DEB8793028E97 /* Pods-Silience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.release.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +68,7 @@
 			children = (
 				17D281EC221C63D000F1D86F /* MainViewController.swift */,
 				17D281FE221C72E800F1D86F /* NewTaskViewController.swift */,
+				17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -71,10 +76,10 @@
 		1744D433221F28BF000D7F10 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				1744D438221F2E11000D7F10 /* File.swift */,
-				17BD54202220236B00AC7711 /* ParseJSON.swift */,
+				17DAC6F22237C6CD00E9FDEF /* File Management */,
+				1727A1842227EA6A00C04884 /* DailyWords.swift */,
 				17ACC6572225AC1400EC8FC2 /* TaskManager.swift */,
-				1727A1842227EA6A00C04884 /* DayWord.swift */,
+				17E1906B2237E03D00FC543D /* CalendarCell.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -100,16 +105,33 @@
 		17D281E9221C63D000F1D86F /* Silience */ = {
 			isa = PBXGroup;
 			children = (
-				1744D433221F28BF000D7F10 /* Swift */,
-				17D281F0221C63D000F1D86F /* Main.storyboard */,
 				170D45B7221D809100A278F3 /* Silience.entitlements */,
-				170D45B6221D7EAB00A278F3 /* Controllers */,
+				17D281F8221C63D100F1D86F /* Info.plist */,
 				17D281EA221C63D000F1D86F /* AppDelegate.swift */,
 				17D281F3221C63D100F1D86F /* Assets.xcassets */,
-				17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */,
-				17D281F8221C63D100F1D86F /* Info.plist */,
+				170D45B6221D7EAB00A278F3 /* Controllers */,
+				17DAC6F12237C5F000E9FDEF /* Storyboard */,
+				1744D433221F28BF000D7F10 /* Swift */,
 			);
 			path = Silience;
+			sourceTree = "<group>";
+		};
+		17DAC6F12237C5F000E9FDEF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				17D281F0221C63D000F1D86F /* Main.storyboard */,
+				17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		17DAC6F22237C6CD00E9FDEF /* File Management */ = {
+			isa = PBXGroup;
+			children = (
+				1744D438221F2E11000D7F10 /* File.swift */,
+				17BD54202220236B00AC7711 /* ParseJSON.swift */,
+			);
+			path = "File Management";
 			sourceTree = "<group>";
 		};
 		60655F5870F8B20191216216 /* Pods */ = {
@@ -118,7 +140,6 @@
 				955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */,
 				E1EDD71E578DEB8793028E97 /* Pods-Silience.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -252,11 +273,13 @@
 			files = (
 				1744D439221F2E11000D7F10 /* File.swift in Sources */,
 				17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */,
+				17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */,
 				17D281EB221C63D000F1D86F /* AppDelegate.swift in Sources */,
 				17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */,
 				17ACC6582225AC1400EC8FC2 /* TaskManager.swift in Sources */,
-				1727A1852227EA6A00C04884 /* DayWord.swift in Sources */,
+				1727A1852227EA6A00C04884 /* DailyWords.swift in Sources */,
 				17D281ED221C63D000F1D86F /* MainViewController.swift in Sources */,
+				17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +436,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Silience.Silience;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -433,6 +457,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Silience.Silience;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
