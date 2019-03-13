@@ -12,13 +12,21 @@ import JTAppleCalendar
 class CalendarControllerView: UIViewController {
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var popupView: UIView!
     
     let formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
     }
+    
+    @IBAction func popupClose(_ sender: Any) {
+        if(!popupView.isHidden){
+            popupView.isHidden = true
+        }
+    }
+    
 }
 
 extension CalendarControllerView: JTAppleCalendarViewDataSource {
@@ -65,7 +73,6 @@ extension CalendarControllerView: JTAppleCalendarViewDelegate {
             cell.selectedView.isHidden = false
         }else{
             cell.selectedView.isHidden = true
-
         }
         
         cell.dateLabel.text = cellState.text
@@ -76,6 +83,10 @@ extension CalendarControllerView: JTAppleCalendarViewDelegate {
         guard let validCell = cell as? CalendarCell else { return }
         
         validCell.selectedView.isHidden = false
+        
+        if(popupView.isHidden){
+            popupView.isHidden = false
+        }
     }
     
     //Deselected a cell

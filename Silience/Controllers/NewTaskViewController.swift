@@ -117,4 +117,8 @@ class NewTaskViewController: UIViewController {
         taskManager.save()
         
     }
+    @IBAction func clearTaskArray(_ sender: Any) {
+        let taskManager = TaskManager()
+        taskManager.clear()
+    }
 }
