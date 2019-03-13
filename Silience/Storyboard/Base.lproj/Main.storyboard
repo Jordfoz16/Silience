@@ -218,6 +218,20 @@
                                     <action selector="clearTaskArray:" destination="0gh-tf-6vh" eventType="touchUpInside" id="5l3-YE-0D6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lp-9A-imY">
+                                <rect key="frame" x="16" y="296" width="119" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WV9-2Z-iMU">
+                                <rect key="frame" x="147" y="296" width="212" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -264,6 +278,7 @@
                         <viewLayoutGuide key="safeArea" id="6MC-V9-rCl"/>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextBox" destination="WV9-2Z-iMU" id="SrT-Qc-BdD"/>
                         <outlet property="endDateTextBox" destination="U63-YU-9WB" id="HY5-Qz-tWC"/>
                         <outlet property="minutesLabel" destination="wqY-p3-kRn" id="Emg-mk-GaX"/>
                         <outlet property="nameTextBox" destination="S1j-8u-lbB" id="EiP-LN-OL9"/>
@@ -273,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFy-jS-9Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2790" y="-988"/>
+            <point key="canvasLocation" x="2789.5999999999999" y="-988.15592203898063"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="wg7-f3-ORb">
