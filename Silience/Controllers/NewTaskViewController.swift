@@ -15,6 +15,7 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var startDateTextBox: UITextField!
     @IBOutlet weak var endDateTextBox: UITextField!
     @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var descriptionTextBox: UITextView!
     
     private var datePicker: UIDatePicker?
     private var startDate: Date = Date.init()
@@ -107,15 +108,19 @@ class NewTaskViewController: UIViewController {
         let startDate = startDateTextBox.text
         let endDate = endDateTextBox.text
         let hours = timeTextBox.text
-        let description = "None"
+        let description = descriptionTextBox.text
         
         //Creating a new task object
+
         let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description, projectType: ProjectType.project, projectComplete: false)
-        
         
         let taskManager = TaskManager()
         taskManager.add(task: newTask)
         taskManager.save()
         
+    }
+    @IBAction func clearTaskArray(_ sender: Any) {
+        let taskManager = TaskManager()
+        taskManager.clear()
     }
 }

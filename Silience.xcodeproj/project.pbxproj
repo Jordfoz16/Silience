@@ -17,6 +17,9 @@
 		17D281F4221C63D100F1D86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F3221C63D100F1D86F /* Assets.xcassets */; };
 		17D281F7221C63D100F1D86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */; };
 		17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281FE221C72E800F1D86F /* NewTaskViewController.swift */; };
+		17D7973B22393213000B2F87 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D7973A22393213000B2F87 /* ProjectTableViewCell.swift */; };
+		17D7973E22393520000B2F87 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D7973D22393520000B2F87 /* ProjectTableViewController.swift */; };
+		17D7974022393AB8000B2F87 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D7973F22393AB8000B2F87 /* Test.swift */; };
 		17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906B2237E03D00FC543D /* CalendarCell.swift */; };
 		17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */; };
 		414A5849A0ABE358080C228A /* Pods_Silience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */; };
@@ -37,6 +40,9 @@
 		17D281F6221C63D100F1D86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D281F8221C63D100F1D86F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D281FE221C72E800F1D86F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		17D7973A22393213000B2F87 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		17D7973D22393520000B2F87 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		17D7973F22393AB8000B2F87 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		17E1906B2237E03D00FC543D /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarControllerView.swift; sourceTree = "<group>"; };
 		955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.debug.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 				17D281EC221C63D000F1D86F /* MainViewController.swift */,
 				17D281FE221C72E800F1D86F /* NewTaskViewController.swift */,
 				17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */,
+				17D7973D22393520000B2F87 /* ProjectTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -76,10 +83,11 @@
 		1744D433221F28BF000D7F10 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				17D7973C2239322D000B2F87 /* Calendar */,
+				17D79739223931CF000B2F87 /* ProjectTable */,
 				17DAC6F22237C6CD00E9FDEF /* File Management */,
 				1727A1842227EA6A00C04884 /* DailyWords.swift */,
 				17ACC6572225AC1400EC8FC2 /* TaskManager.swift */,
-				17E1906B2237E03D00FC543D /* CalendarCell.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -114,6 +122,23 @@
 				1744D433221F28BF000D7F10 /* Swift */,
 			);
 			path = Silience;
+			sourceTree = "<group>";
+		};
+		17D79739223931CF000B2F87 /* ProjectTable */ = {
+			isa = PBXGroup;
+			children = (
+				17D7973A22393213000B2F87 /* ProjectTableViewCell.swift */,
+				17D7973F22393AB8000B2F87 /* Test.swift */,
+			);
+			path = ProjectTable;
+			sourceTree = "<group>";
+		};
+		17D7973C2239322D000B2F87 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				17E1906B2237E03D00FC543D /* CalendarCell.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		17DAC6F12237C5F000E9FDEF /* Storyboard */ = {
@@ -276,10 +301,13 @@
 				17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */,
 				17D281EB221C63D000F1D86F /* AppDelegate.swift in Sources */,
 				17D281FF221C72E800F1D86F /* NewTaskViewController.swift in Sources */,
+				17D7974022393AB8000B2F87 /* Test.swift in Sources */,
 				17ACC6582225AC1400EC8FC2 /* TaskManager.swift in Sources */,
 				1727A1852227EA6A00C04884 /* DailyWords.swift in Sources */,
 				17D281ED221C63D000F1D86F /* MainViewController.swift in Sources */,
+				17D7973B22393213000B2F87 /* ProjectTableViewCell.swift in Sources */,
 				17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */,
+				17D7973E22393520000B2F87 /* ProjectTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

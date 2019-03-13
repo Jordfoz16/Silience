@@ -14,8 +14,6 @@ class MainViewController: UIViewController {
     let taskManager = TaskManager()
     let dayWord = DailyWords()
     
-    @IBOutlet weak var wordLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,15 +29,9 @@ class MainViewController: UIViewController {
         content.title = "Weekly Staff Meeting"
         content.body = "Every Tuesday at 2pm"
         
-        wordLabel.text = dayWord.getRandomWord()
-        
     }
     
-    @IBAction func decodeJSON(_ sender: Any) {
-        print(DailyWords.wordsArray)
-    }
-    
-    @IBAction func decodeTaskJSON(_ sender: Any) {
+    @IBAction func taskArray(_ sender: Any) {
         print(TaskManager.taskArray)
     }
 }
