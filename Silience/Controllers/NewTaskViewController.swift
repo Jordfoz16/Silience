@@ -110,7 +110,8 @@ class NewTaskViewController: UIViewController {
         let description = "None"
         
         //Creating a new task object
-        let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description)
+        let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description, projectType: ProjectType.project, projectComplete: false)
+        
         
         let taskManager = TaskManager()
         taskManager.add(task: newTask)
