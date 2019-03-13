@@ -8,12 +8,19 @@
 
 import Foundation
 
+enum ProjectType: String, Codable {
+    case dailyTask
+    case project
+}
+
 struct Task: Codable {
     let name: String
     let startDate: String
     let endDate: String
     let hours: String
     let description: String
+    let projectType: ProjectType
+    let projectComplete: Bool
 }
 
 class TaskManager {
