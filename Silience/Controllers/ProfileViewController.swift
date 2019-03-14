@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ProjectTableViewController: UIViewController, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var projects = [Task]()
+    var projects = [Projects]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +20,15 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         loadProjects()
+        
         tableView.dataSource = self
-        print(projects)
         tableView.reloadData()
     }
     
     func loadProjects(){
-        projects = TaskManager.taskArray
+        projects = ProjectManager.projectsArray
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +36,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return TaskManager.taskArray.count
+         return ProjectManager.projectsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,7 +44,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource {
         //Customize custome cell
         let cellIdentifier = "reuseCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProjectTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProfileTableViewCell else {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
@@ -52,6 +53,7 @@ class ProjectTableViewController: UIViewController, UITableViewDataSource {
         cell.projectName.text = project.name
         cell.projectStart.text = project.startDate
         cell.projectEnd.text = project.endDate
+        cell.projectDescription.text = project.description
         
         
         return cell

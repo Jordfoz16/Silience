@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
+class ProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var projectName: UILabel!
-    @IBOutlet weak var projectDescription: UILabel!
     @IBOutlet weak var projectImage: UIImageView!
     @IBOutlet weak var projectStart: UILabel!
     @IBOutlet weak var projectEnd: UILabel!
+    @IBOutlet weak var projectDescription: UITextView!
     
     
     override func awakeFromNib() {

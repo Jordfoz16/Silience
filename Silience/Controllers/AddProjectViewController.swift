@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTaskViewController: UIViewController {
+class AddProjectViewController: UIViewController {
     
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var timeTextBox: UITextField!
@@ -112,15 +112,15 @@ class NewTaskViewController: UIViewController {
         
         //Creating a new task object
 
-        let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description, projectType: ProjectType.project, projectComplete: false)
+        let newTask: Projects = Projects(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false)
         
-        let taskManager = TaskManager()
+        let taskManager = ProjectManager()
         taskManager.add(task: newTask)
         taskManager.save()
         
     }
     @IBAction func clearTaskArray(_ sender: Any) {
-        let taskManager = TaskManager()
+        let taskManager = ProjectManager()
         taskManager.clear()
     }
 }

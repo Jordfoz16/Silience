@@ -11,7 +11,9 @@ import UserNotifications
 
 class MainViewController: UIViewController {
     
-    let taskManager = TaskManager()
+    @IBOutlet weak var dailyWord: UILabel!
+    
+    let taskManager = ProjectManager()
     let dayWord = DailyWords()
     
     override func viewDidLoad() {
@@ -29,9 +31,10 @@ class MainViewController: UIViewController {
         content.title = "Weekly Staff Meeting"
         content.body = "Every Tuesday at 2pm"
         
+        dailyWord.text = dayWord.getRandomWord()
     }
     
     @IBAction func taskArray(_ sender: Any) {
-        print(TaskManager.taskArray)
+        print(ProjectManager.projectsArray)
     }
 }

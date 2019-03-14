@@ -9,41 +9,137 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarControllerView: UIViewController {
-
+class CalendarControllerView: UIViewController, UITableViewDataSource {
+    
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    let selectedDateColour = UIColor.black
+    let currentMonthColour = UIColor.black
+    let previousMonthColour = UIColor.gray
     
     let formatter = DateFormatter()
+    let projectManager = ProjectManager()
+    var filteredProjects = [Projects]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupCalendar()
     }
     
-    @IBAction func popupClose(_ sender: Any) {
-        if(!popupView.isHidden){
-            popupView.isHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
+    
+    func setupCalendar() {
+        //Setting spacing for the cells
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
+        
+        //Setting default values of calendar labels
+        calendarView.visibleDates { (visableDates) in
+            self.setupViewOfCalendar(from: visableDates)
         }
     }
     
+    func setupViewOfCalendar(from visableDates: DateSegmentInfo){
+        let date = visableDates.monthDates.first!.date
+        
+        self.formatter.dateFormat = "yyyy"
+        self.yearLabel.text = self.formatter.string(from: date)
+        
+        self.formatter.dateFormat = "MMMM"
+        self.monthLabel.text = self.formatter.string(from: date)
+    }
+    
+    func handleCellSelected(view: JTAppleCell?, cellState: CellState){
+        guard let validCell = view as? CalendarCell else { return }
+
+        if(cellState.isSelected){
+            validCell.selectedView.isHidden = false
+        }else{
+            validCell.selectedView.isHidden = true
+        }
+    }
+    
+    func handleCellTextColour(view: JTAppleCell?, cellState: CellState){
+        guard let validCell = view as? CalendarCell else { return }
+        
+        if(cellState.isSelected){
+            validCell.dateLabel.textColor = selectedDateColour
+        }else{
+            if(cellState.dateBelongsTo == .thisMonth){
+                validCell.dateLabel.textColor = currentMonthColour
+            }else{
+                validCell.dateLabel.textColor = previousMonthColour
+            }
+        }
+    }
+    
+    func handleEventColour(view: JTAppleCell?, cellState: CellState){
+        guard let validCell = view as? CalendarCell else { return }
+        
+        
+        if(cellState.dateBelongsTo == .thisMonth){
+            let cellDate = formatDate(date: cellState.date)
+            
+            if(projectManager.isEvent(date: cellDate)){
+                validCell.eventView.isHidden = false
+            }else{
+                validCell.eventView.isHidden = true
+            }
+        }
+    }
+    
+    func formatDate(date: Date) -> String{
+        
+        formatter.dateFormat = "dd/MM/YYYY"
+        let formattedDate = formatter.string(from: date)
+        
+        return formattedDate
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredProjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "reuseCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CalendarTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        let project = filteredProjects[indexPath.row]
+        
+        cell.projectName.text = project.name
+        cell.projectDescription.text = project.description
+        
+        
+        return cell
+    }
 }
 
 extension CalendarControllerView: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
-        let persianCalendar = Calendar(identifier: .persian)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
         
-        let testFotmatter = DateFormatter()
-        testFotmatter.dateFormat = "yyyy/MM/dd"
-        testFotmatter.timeZone = persianCalendar.timeZone
-        testFotmatter.locale = persianCalendar.locale
-        
-        let startDate = testFotmatter.date(from: "2017/01/01")!
-        let endDate = testFotmatter.date(from: "2017/09/30")!
+        let startDate = formatter.date(from: "01/03/2018")!
+        let endDate = formatter.date(from: "01/12/2020")!
         
         
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, calendar: persianCalendar)
+        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, calendar: Calendar.current)
         return parameters
     }
 }
@@ -51,7 +147,6 @@ extension CalendarControllerView: JTAppleCalendarViewDataSource {
 extension CalendarControllerView: JTAppleCalendarViewDelegate {
     
     // Displays the cell
-    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         // The code here is the same as cellForItem function
         let cell = cell as! CalendarCell
@@ -69,32 +164,34 @@ extension CalendarControllerView: JTAppleCalendarViewDelegate {
     //Configure Cell
     func sharedFunctionToConfigureCell(cell: CalendarCell, cellState: CellState, date: Date) {
         
-        if(cellState.isSelected){
-            cell.selectedView.isHidden = false
-        }else{
-            cell.selectedView.isHidden = true
-        }
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColour(view: cell, cellState: cellState)
+        handleEventColour(view: cell, cellState: cellState)
         
         cell.dateLabel.text = cellState.text
     }
     
-    //Selected a cell
+    //Gets called when selected a cell
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        guard let validCell = cell as? CalendarCell else { return }
         
-        validCell.selectedView.isHidden = false
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColour(view: cell, cellState: cellState)
+        filteredProjects = projectManager.filterByDate(date: formatDate(date: date))
+        tableView.reloadData()
         
-        if(popupView.isHidden){
-            popupView.isHidden = false
-        }
     }
     
-    //Deselected a cell
+    //Gets called when deselected a cell
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        guard let validCell = cell as? CalendarCell else { return }
         
-        validCell.selectedView.isHidden = true
-        
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColour(view: cell, cellState: cellState)
+
+    }
+    
+    //Gets called when users scrolls calendar
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setupViewOfCalendar(from: visibleDates)
     }
     
 }

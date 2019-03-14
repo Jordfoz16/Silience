@@ -11,7 +11,7 @@ import Foundation
 class ParseJSON {
     
     //Encodes the array into JSON format
-    func encodeJSON(data: [Task]) -> String{
+    func encodeJSON(data: [Projects]) -> String{
         let encoder = JSONEncoder()
         var encodedData: Data = Data()
         
@@ -51,7 +51,7 @@ class ParseJSON {
         
         do{
             //Put the data into an array of tasks
-            data = try decoder.decode([Task].self, from: jsonData)
+            data = try decoder.decode([Projects].self, from: jsonData)
         } catch let error{
             print(error as Any)
         }

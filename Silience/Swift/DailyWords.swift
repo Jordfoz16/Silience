@@ -23,11 +23,11 @@ class DailyWords{
     init(){
         
         //Checks if the file exists, else it will load the file into memory
-        if(TaskManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
-            TaskManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
+        if(ProjectManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
+            ProjectManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
             loadDefault()
         }else{
-            let file = TaskManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
+            let file = ProjectManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
             if(!file.isEmpty){
                 DailyWords.wordsArray = DailyWords.jsonParser.decodeJSON(jsonString: file) as! [String]
             }else{
