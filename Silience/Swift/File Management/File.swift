@@ -10,23 +10,21 @@ import Foundation
 
 class File {
     
-    /*
-        File Management for creating and read files
-    */
-    
     private var isCreated: Bool = false
     
+    //Gets the Documents URL
     var DocumentDirURL: URL{
         let url = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return url
     }
     
+    //Gets the files URL
     func fileURL(fileName: String, fileExtension: String)-> URL{
         return DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
     }
     
-    func writeFile(writeString: String, fileName: String, fileExtension: String = "txt") {
-        
+    //Writes a file to the drive
+    func writeFile(writeString: String, fileName: String, fileExtension: String) {
         let url = fileURL(fileName: fileName, fileExtension: fileExtension)
         do{
             try writeString.write(to: url, atomically: true, encoding: .utf8)
@@ -35,7 +33,8 @@ class File {
         }
     }
     
-    func readFile(fileName: String, fileExtension: String = "txt") -> String {
+    //Reads a file and returns the data as a string
+    func readFile(fileName: String, fileExtension: String) -> String {
         var readString = ""
         let url = fileURL(fileName: fileName, fileExtension: fileExtension)
         do{
@@ -46,9 +45,13 @@ class File {
         return readString
     }
     
-    func checkFile(fileName: String, fileExtension: String = "txt") -> Bool{
-        let check = fileURL(fileName: fileName, fileExtension: fileExtension).isFileURL
+    //Checks to see if a file exists
+    func checkFile(fileName: String, fileExtension: String) -> Bool{
+        var check = false
+        do{
+            check = try fileURL(fileName: fileName, fileExtension: fileExtension).checkPromisedItemIsReachable()
+        }catch{}
         isCreated = check
-        return check
+        return !check
     }
 }

@@ -8,13 +8,14 @@
 
 import UIKit
 
-class NewTaskViewController: UIViewController {
+class AddProjectViewController: UIViewController {
     
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var timeTextBox: UITextField!
     @IBOutlet weak var startDateTextBox: UITextField!
     @IBOutlet weak var endDateTextBox: UITextField!
     @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var descriptionTextBox: UITextView!
     
     private var datePicker: UIDatePicker?
     private var startDate: Date = Date.init()
@@ -78,6 +79,7 @@ class NewTaskViewController: UIViewController {
         updateWorkLoad()
     }
     
+    //Calculates the amount of work a day needed to complete a task
     func updateWorkLoad(){
         //Check data has been entered
         if(timeTextBox.text == "" || startDateTextBox.text == "" || endDateTextBox.text == ""){
@@ -98,22 +100,27 @@ class NewTaskViewController: UIViewController {
         
     }
     
+    //Add a new task to the JSON file
     @IBAction func addNewTask(sender: Any) {
         
-        let fileManager = File()
-        let jsonParser = ParseJSON()
-        
+        //Getting infomation from the text box
         let name = nameTextBox.text
         let startDate = startDateTextBox.text
         let endDate = endDateTextBox.text
         let hours = timeTextBox.text
-        let description = "None"
+        let description = descriptionTextBox.text
         
-        let newTask: Task = Task(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description)
+        //Creating a new task object
+
+        let newTask: Projects = Projects(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false)
         
-        jsonParser.addTask(task: newTask)
-        jsonParser.encodeJSON()
+        let taskManager = ProjectManager()
+        taskManager.add(task: newTask)
+        taskManager.save()
         
-        fileManager.writeFile(writeString: jsonParser.jsonToString(), fileName: "Tasks", fileExtension: "json")
+    }
+    @IBAction func clearTaskArray(_ sender: Any) {
+        let taskManager = ProjectManager()
+        taskManager.clear()
     }
 }
