@@ -11,8 +11,12 @@ import UIKit
 class ProfileViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var profileFirstName: UILabel!
+    @IBOutlet weak var profileSecondName: UILabel!
+    @IBOutlet weak var profileBio: UILabel!
     
     var projects = [Projects]()
+    let profileManager = ProfileManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         tableView.dataSource = self
         tableView.reloadData()
+        
+        if(profileManager.profileCreated()){
+            let user = profileManager.getUser()
+            
+            profileFirstName.text = user.firstName
+            profileSecondName.text = user.secondName
+            profileBio.text = user.bio
+        }
     }
     
     func loadProjects(){
@@ -57,5 +69,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         
         return cell
+    }
+    
+    @IBAction func getProfileArray(_ sender: Any) {
+        
+        print(ProfileManager.profile)
     }
 }

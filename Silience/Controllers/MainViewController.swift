@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dailyWord: UILabel!
     
     let taskManager = ProjectManager()
-    let dayWord = DailyWords()
+    let dayWord = DailyWordsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()

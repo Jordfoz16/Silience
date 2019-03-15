@@ -24,6 +24,20 @@ class ParseJSON {
         return String(data: encodedData, encoding: .utf8)!
     }
     
+    func encodeJSON(data: [User]) -> String{
+        let encoder = JSONEncoder()
+        var encodedData: Data = Data()
+        
+        do{
+            encodedData = try encoder.encode(data)
+        } catch let error{
+            print(error as Any)
+        }
+        
+        return String(data: encodedData, encoding: .utf8)!
+    }
+    
+    
     func encodeJSON(data: [String]) -> String{
         let encoder = JSONEncoder()
         var encodedData: Data = Data()
@@ -41,20 +55,24 @@ class ParseJSON {
     func decodeJSON(jsonString: String) -> Any{
         //Converts a json string into an array of tasks
         let jsonData = jsonString.data(using: .utf8)!
+        
         return decodeJSON(jsonData: jsonData)
     }
     
     //Decodes JSON formatted data into an array
-    func decodeJSON(jsonData: Data) -> Any{
+    func decodeJSON(jsonData: Data) -> [Any]{
         let decoder = JSONDecoder()
         var data = [Any]()
         
         do{
-            //Put the data into an array of tasks
             data = try decoder.decode([Projects].self, from: jsonData)
-        } catch let error{
-            print(error as Any)
-        }
+        }catch{
+            do{
+                data = try decoder.decode([User].self, from: jsonData)
+            }catch{
+                do{
+                    data = try decoder.decode([String].self, from: jsonData)
+                }catch{ } } }
         
         return data
     }

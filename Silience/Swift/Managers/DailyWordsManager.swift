@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DailyWords{
+class DailyWordsManager{
     
     static let fileManager = File()
     static let jsonParser = ParseJSON()
@@ -28,8 +28,9 @@ class DailyWords{
             loadDefault()
         }else{
             let file = ProjectManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
+            
             if(!file.isEmpty){
-                DailyWords.wordsArray = DailyWords.jsonParser.decodeJSON(jsonString: file) as! [String]
+                DailyWordsManager.wordsArray = DailyWordsManager.jsonParser.decodeJSON(jsonString: file) as! [String]
             }else{
                 loadDefault()
             }
@@ -40,6 +41,8 @@ class DailyWords{
         for word in defaultWords{
             add(word: word)
         }
+        
+        save()
     }
     
     func getRandomWord() -> String{
@@ -56,17 +59,18 @@ class DailyWords{
     }
     
     func add(word: String){
-        DailyWords.wordsArray.append(word)
+        DailyWordsManager.wordsArray.append(word)
+        save()
     }
     
     func save(){
-        let jsonData = DailyWords.jsonParser.encodeJSON(data: DailyWords.wordsArray)
+        let jsonData = DailyWordsManager.jsonParser.encodeJSON(data: DailyWordsManager.wordsArray)
         
-        DailyWords.fileManager.writeFile(writeString: jsonData, fileName: fileName, fileExtension: fileExtension)
+        DailyWordsManager.fileManager.writeFile(writeString: jsonData, fileName: fileName, fileExtension: fileExtension)
     }
     
     func clear(){
-        DailyWords.wordsArray.removeAll()
-        DailyWords.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
+        DailyWordsManager.wordsArray.removeAll()
+        DailyWordsManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
     }
 }

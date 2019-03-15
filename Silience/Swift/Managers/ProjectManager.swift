@@ -47,6 +47,7 @@ class ProjectManager {
     
     func add(task: Projects){
         ProjectManager.projectsArray.append(task)
+        save()
     }
     
     func remove(){
