@@ -18,7 +18,7 @@ class DailyWordsManager{
     let fileName = "Words"
     let fileExtension = "json"
     
-    let defaultWords = ["Nature", "City", "Waterfall", "Fish", "Plants", "Ink", "Clouds"]
+    let defaultWords = ["Happy","Love","Hopeless","Animal","Dream","Nightmare","Shadow","Drained","Wow","City","Ink","Plants","Bike","Town","Clothes","Dark","Night","Cold","Warm","Excited","Colourful","Minimalist","Monochrome","Secret","Sky","Fashion","Calm","Imagination","Small","Fluffy","Sad ","Technology","New","Old","Ancient","Weathered","Geometric","Curves","Refined","Attractive","Abstract","Travel ","Work ","Education","Water","Limbo","Lust","Gluttony","Greed","Rage","Heresy","Violence","Fraud","Treachery"]
     
     init(){
         
