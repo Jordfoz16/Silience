@@ -65,9 +65,6 @@
                                             <constraint firstAttribute="width" constant="90" id="lZc-n1-uJ1"/>
                                         </constraints>
                                         <state key="normal" image="paper-clip-icon"/>
-                                        <connections>
-                                            <segue destination="0gh-tf-6vh" kind="show" id="GcQ-Vl-vjl"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngO-kg-gdK">
                                         <rect key="frame" x="126.5" y="39" width="90" height="90"/>
@@ -245,7 +242,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
@@ -333,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFy-jS-9Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2789.5999999999999" y="-988.15592203898063"/>
+            <point key="canvasLocation" x="2945" y="-513"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="ed9-bb-I3Q">
@@ -430,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AD-vW-BYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2789.5999999999999" y="-204.64767616191907"/>
+            <point key="canvasLocation" x="2945" y="159"/>
         </scene>
         <!--Profile-->
         <scene sceneID="4Yh-aJ-hX7">
@@ -770,6 +767,9 @@
                                         <rect key="frame" x="141" y="104" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="add-icon"/>
+                                        <connections>
+                                            <segue destination="0gh-tf-6vh" kind="show" id="kYU-Oc-8vi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALS-sj-gOu" userLabel="Comment">
                                         <rect key="frame" x="74" y="104" width="40" height="40"/>
@@ -900,14 +900,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-mB-iJ1">
                                         <rect key="frame" x="0.0" y="0.0" width="76" height="30"/>
                                         <state key="normal" title="Featured"/>
+                                        <connections>
+                                            <action selector="featuredClicked:" destination="6Pr-Uc-hw6" eventType="touchUpInside" id="DYQ-dU-ud7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcn-YW-tFg">
                                         <rect key="frame" x="134" y="0.0" width="76" height="30"/>
                                         <state key="normal" title="Working"/>
+                                        <connections>
+                                            <action selector="workingClicked:" destination="6Pr-Uc-hw6" eventType="touchUpInside" id="s6O-J2-s3z"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOu-Fs-lxe">
                                         <rect key="frame" x="268" y="0.0" width="76" height="30"/>
                                         <state key="normal" title="Completed"/>
+                                        <connections>
+                                            <action selector="completedClicked:" destination="6Pr-Uc-hw6" eventType="touchUpInside" id="Suj-Xt-DPE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

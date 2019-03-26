@@ -21,6 +21,7 @@ struct Projects: Codable {
     let description: String
     let projectType: ProjectType
     let projectComplete: Bool
+    let projectFeatured: Bool
 }
 
 class ProjectManager {
@@ -29,7 +30,7 @@ class ProjectManager {
     
     static var projectsArray = [Projects]()
     
-    let fileName = "Task"
+    let fileName = "Projects"
     let fileExtension = "json"
     
     init(){

@@ -18,6 +18,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     var projects = [Projects]()
     let profileManager = ProfileManager()
     
+    var filterFeatured: Bool = true
+    var filterCompleted: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,9 +29,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         
         loadProjects()
-        
-        tableView.dataSource = self
-        tableView.reloadData()
         
         if(profileManager.profileCreated()){
             let user = profileManager.getUser()
@@ -40,7 +40,45 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     func loadProjects(){
-        projects = ProjectManager.projectsArray
+        
+        projects.removeAll()
+        
+        for project in ProjectManager.projectsArray {
+            
+            if(filterFeatured){
+                if(project.projectFeatured){
+                    projects.append(project)
+                }
+            }else if(filterCompleted){
+                if(project.projectComplete){
+                    projects.append(project)
+                }
+            }else{
+                projects.append(project)
+            }
+        }
+        
+        tableView.dataSource = self
+        tableView.reloadData()
+        //projects = ProjectManager.projectsArray
+    }
+    
+    @IBAction func featuredClicked(_ sender: Any) {
+        filterFeatured = true
+        filterCompleted = false
+        loadProjects()
+    }
+    
+    @IBAction func workingClicked(_ sender: Any) {
+        filterFeatured = false
+        filterCompleted = false
+        loadProjects()
+    }
+    
+    @IBAction func completedClicked(_ sender: Any) {
+        filterFeatured = false
+        filterCompleted = true
+        loadProjects()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +86,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return ProjectManager.projectsArray.count
+         return projects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

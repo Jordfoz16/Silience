@@ -111,7 +111,7 @@ class AddProjectViewController: UIViewController {
         let description = descriptionTextBox.text
         
         //Creating a new task object
-        let newTask: Projects = Projects(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false)
+        let newTask: Projects = Projects(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
         
         let taskManager = ProjectManager()
         taskManager.add(task: newTask)
