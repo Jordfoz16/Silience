@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,6 +65,9 @@
                                             <constraint firstAttribute="width" constant="90" id="lZc-n1-uJ1"/>
                                         </constraints>
                                         <state key="normal" image="paper-clip-icon"/>
+                                        <connections>
+                                            <segue destination="1SI-DV-iD0" kind="show" id="h3b-XW-BCI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngO-kg-gdK">
                                         <rect key="frame" x="126.5" y="39" width="90" height="90"/>
@@ -114,7 +117,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="-988.15592203898063"/>
+            <point key="canvasLocation" x="1804" y="-1218"/>
+        </scene>
+        <!--Image Viewer View Controller-->
+        <scene sceneID="xyP-8u-CdL">
+            <objects>
+                <collectionViewController id="1SI-DV-iD0" customClass="ImageViewerViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6PK-CK-jMg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="5t1-12-lyj">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridViewCell" id="RPL-c4-Wa8" customClass="ImageCollectionViewCell" customModule="Silience" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2rU-4C-wfR">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <connections>
+                                    <outlet property="imageView" destination="2rU-4C-wfR" id="IlP-qF-Vcf"/>
+                                    <segue destination="OBI-ge-NaJ" kind="show" id="ciM-zb-iTI"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="1SI-DV-iD0" id="5hQ-Te-GuQ"/>
+                            <outlet property="delegate" destination="1SI-DV-iD0" id="b4f-fv-lgj"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="collectionViewFlowLayout" destination="5t1-12-lyj" id="U4A-lC-n1a"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4G-ho-AJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933.5999999999999" y="-1218.440779610195"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="Exm-jy-L3y">
+            <objects>
+                <viewController id="OBI-ge-NaJ" customClass="ImageViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uge-5r-VPN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6SQ-Re-Ntx">
+                                <rect key="frame" x="16" y="68" width="343" height="517"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6SQ-Re-Ntx" firstAttribute="top" secondItem="Xx6-6Y-9lp" secondAttribute="top" constant="4" id="Ezo-3H-67b"/>
+                            <constraint firstItem="Xx6-6Y-9lp" firstAttribute="bottom" secondItem="6SQ-Re-Ntx" secondAttribute="bottom" constant="33" id="TdP-Oj-X7Z"/>
+                            <constraint firstItem="6SQ-Re-Ntx" firstAttribute="leading" secondItem="Xx6-6Y-9lp" secondAttribute="leading" constant="16" id="pWM-bu-CzF"/>
+                            <constraint firstItem="Xx6-6Y-9lp" firstAttribute="trailing" secondItem="6SQ-Re-Ntx" secondAttribute="trailing" constant="16" id="wmc-Ih-WvF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xx6-6Y-9lp"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="6SQ-Re-Ntx" id="fFu-8t-pDt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lwB-wD-sfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3712.8000000000002" y="-1218.440779610195"/>
         </scene>
         <!--Add Project-->
         <scene sceneID="j4g-Uc-spg">
@@ -330,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFy-jS-9Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="-513"/>
+            <point key="canvasLocation" x="2935" y="-369"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="ed9-bb-I3Q">
@@ -427,7 +506,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AD-vW-BYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="159"/>
+            <point key="canvasLocation" x="2935" y="271"/>
         </scene>
         <!--Profile-->
         <scene sceneID="4Yh-aJ-hX7">
@@ -721,7 +800,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cba-fb-xPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864.79999999999995" y="-988.15592203898063"/>
+            <point key="canvasLocation" x="865" y="-1218"/>
         </scene>
         <!--Profile-->
         <scene sceneID="P5Z-Ej-Ixf">
@@ -955,12 +1034,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-icon" width="96" height="96"/>
+        <image name="add-icon" width="120" height="120"/>
         <image name="blank-profile" width="720" height="720"/>
-        <image name="camera-icon" width="384" height="384"/>
-        <image name="comment-icon" width="96" height="96"/>
-        <image name="edit-icon" width="96" height="96"/>
+        <image name="camera-icon" width="512" height="512"/>
+        <image name="comment-icon" width="120" height="120"/>
+        <image name="edit-icon" width="128" height="128"/>
         <image name="image-placeholder" width="500" height="350"/>
-        <image name="paper-clip-icon" width="384" height="384"/>
+        <image name="paper-clip-icon" width="480" height="480"/>
     </resources>
 </document>
