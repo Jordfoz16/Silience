@@ -33,7 +33,6 @@ class ImageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Set the appropriate toolbar items based on the media type of the asset.
         
         view.layoutIfNeeded()
         updateStaticImage()
@@ -51,14 +50,11 @@ class ImageViewController: UIViewController {
         
         PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
                                               resultHandler: { image, _ in
-                                                // PhotoKit finished the request, so hide the progress view.
-                                                //self.progressView.isHidden = true
                                                 
                                                 // If the request succeeded, show the image view.
                                                 guard let image = image else { return }
                                                 
                                                 // Show the image.
-                                                //self.livePhotoView.isHidden = true
                                                 self.imageView.isHidden = false
                                                 self.imageView.image = image
         })

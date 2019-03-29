@@ -110,8 +110,15 @@ class AddProjectViewController: UIViewController {
         let hours = timeTextBox.text
         let description = descriptionTextBox.text
         
+        var hasher = Hasher()
+        
+        hasher.combine(name)
+        hasher.combine(startDate)
+        
+        let uniqueID = hasher.finalize()
+        
         //Creating a new task object
-        let newTask: Projects = Projects(name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
+        let newTask: Projects = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
         
         let taskManager = ProjectManager()
         taskManager.add(task: newTask)

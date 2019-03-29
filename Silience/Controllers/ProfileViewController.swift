@@ -39,6 +39,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "EditProjectView"){
+            guard let destination = segue.destination as? EditProjectViewController else { fatalError("Unexpected view controller for segue") }
+            
+            guard let tableViewCell = sender as? ProfileTableViewCell else { fatalError("Unexpected sender for segue") }
+            
+            let uniqueID = tableViewCell.uniqueID
+            destination.uniqueID = uniqueID
+            
+        }
+    }
+    
     func loadProjects(){
         
         projects.removeAll()
@@ -60,7 +72,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         tableView.dataSource = self
         tableView.reloadData()
-        //projects = ProjectManager.projectsArray
     }
     
     @IBAction func featuredClicked(_ sender: Any) {
@@ -95,7 +106,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         let cellIdentifier = "reuseCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProfileTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of ProfileTableViewCell.")
         }
         
         let project = projects[indexPath.row]
@@ -104,6 +115,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         cell.projectStart.text = project.startDate
         cell.projectEnd.text = project.endDate
         cell.projectDescription.text = project.description
+        cell.uniqueID = project.uniqueID
         
         
         return cell

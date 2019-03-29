@@ -25,14 +25,15 @@ class ProfileManager{
     let fileExtension = "json"
     
     init(){
-        
-        //Checks if the file exists, else it will load the file into memory
-        if(ProjectManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
-            ProfileManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
-        }else{
-            let file = ProfileManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
-            if(!file.isEmpty){
-                ProfileManager.profile = ProfileManager.jsonParser.decodeJSON(jsonString: file) as! [User]
+        if(ProfileManager.profile.isEmpty){
+            //Checks if the file exists, else it will load the file into memory
+            if(ProjectManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
+                ProfileManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
+            }else{
+                let file = ProfileManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
+                if(!file.isEmpty){
+                    ProfileManager.profile = ProfileManager.jsonParser.decodeJSON(jsonString: file) as! [User]
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import PhotosUI
 
-class ImageViewerViewController: UICollectionViewController {
+class ImageSelectorViewController: UICollectionViewController {
 
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
@@ -85,7 +85,7 @@ class ImageViewerViewController: UICollectionViewController {
     }
 }
 
-extension ImageViewerViewController: PHPhotoLibraryChangeObserver {
+extension ImageSelectorViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         
         guard let changes = changeInstance.changeDetails(for: fetchResult)

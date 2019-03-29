@@ -47,6 +47,7 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         }
     }
     
+    //Added the year and month to the view
     func setupViewOfCalendar(from visableDates: DateSegmentInfo){
         let date = visableDates.monthDates.first!.date
         
@@ -57,6 +58,7 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         self.monthLabel.text = self.formatter.string(from: date)
     }
     
+    //Adding the colours to selected cells
     func handleCellSelected(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
 
@@ -67,6 +69,7 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         }
     }
     
+    //Changing of the colours of the text depending on the month
     func handleCellTextColour(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
         
@@ -81,9 +84,9 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         }
     }
     
+    //Addes colours to the cells that have project on them
     func handleEventColour(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
-        
         
         if(cellState.dateBelongsTo == .thisMonth){
             let cellDate = formatDate(date: cellState.date)
@@ -96,6 +99,7 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         }
     }
     
+    //Date formatting
     func formatDate(date: Date) -> String{
         
         formatter.dateFormat = "dd/MM/YYYY"
