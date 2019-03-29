@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="1804" y="-1218"/>
         </scene>
-        <!--Image Selector View Controller-->
+        <!--Image Selection-->
         <scene sceneID="xyP-8u-CdL">
             <objects>
-                <collectionViewController id="1SI-DV-iD0" customClass="ImageSelectorViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Image Selection" id="1SI-DV-iD0" customClass="ImageSelectorViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6PK-CK-jMg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="2933.5999999999999" y="-1218.440779610195"/>
         </scene>
-        <!--Image View Controller-->
+        <!--Image Viewer-->
         <scene sceneID="Exm-jy-L3y">
             <objects>
-                <viewController id="OBI-ge-NaJ" customClass="ImageViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Image Viewer" id="OBI-ge-NaJ" customClass="ImageViewController" customModule="Silience" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uge-5r-VPN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -581,6 +581,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D55-j9-gbc">
                                 <rect key="frame" x="108" y="467" width="159" height="44"/>
