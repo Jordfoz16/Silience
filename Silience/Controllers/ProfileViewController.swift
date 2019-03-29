@@ -74,6 +74,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         tableView.reloadData()
     }
     
+    
     @IBAction func featuredClicked(_ sender: Any) {
         filterFeatured = true
         filterCompleted = false

@@ -49,14 +49,14 @@ class ImageViewController: UIViewController {
         }
         
         PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
-                                              resultHandler: { image, _ in
-                                                
-                                                // If the request succeeded, show the image view.
-                                                guard let image = image else { return }
-                                                
-                                                // Show the image.
-                                                self.imageView.isHidden = false
-                                                self.imageView.image = image
+                              resultHandler: { image, _ in
+                                
+                                // If the request succeeded, show the image view.
+                                guard let image = image else { return }
+                                
+                                // Show the image.
+                                self.imageView.isHidden = false
+                                self.imageView.image = image
         })
     }
 }

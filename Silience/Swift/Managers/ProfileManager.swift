@@ -12,6 +12,7 @@ struct User: Codable {
     let firstName: String
     let secondName: String
     let bio: String
+    let pictureID: String
 }
 
 class ProfileManager{
