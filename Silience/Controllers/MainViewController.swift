@@ -8,13 +8,17 @@
 
 import UIKit
 import UserNotifications
+import Photos
+import PhotosUI
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var dailyWord: UILabel!
     
+    var allPhotos: PHFetchResult<PHAsset>!
+    
     let taskManager = ProjectManager()
-    let dayWord = DailyWords()
+    let dayWord = DailyWordsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +40,23 @@ class MainViewController: UIViewController {
     
     @IBAction func taskArray(_ sender: Any) {
         print(ProjectManager.projectsArray)
+    }
+}
+
+extension MainViewController: PHPhotoLibraryChangeObserver {
+    /// - Tag: RespondToChanges
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        
+        // Change notifications may originate from a background queue.
+        // Re-dispatch to the main queue before acting on the change,
+        // so you can update the UI.
+        DispatchQueue.main.sync {
+            // Check each of the three top-level fetches for changes.
+            if let changeDetails = changeInstance.changeDetails(for: allPhotos) {
+                // Update the cached fetch result.
+                allPhotos = changeDetails.fetchResultAfterChanges
+                // Don't update the table row that always reads "All Photos."
+            }
+        }
     }
 }

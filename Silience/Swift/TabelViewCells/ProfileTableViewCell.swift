@@ -16,6 +16,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var projectEnd: UILabel!
     @IBOutlet weak var projectDescription: UITextView!
     
+    var uniqueID: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()

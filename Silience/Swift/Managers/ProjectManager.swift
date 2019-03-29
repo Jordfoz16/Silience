@@ -14,6 +14,7 @@ enum ProjectType: String, Codable {
 }
 
 struct Projects: Codable {
+    let uniqueID: Int
     let name: String
     let startDate: String
     let endDate: String
@@ -21,6 +22,7 @@ struct Projects: Codable {
     let description: String
     let projectType: ProjectType
     let projectComplete: Bool
+    let projectFeatured: Bool
 }
 
 class ProjectManager {
@@ -29,24 +31,27 @@ class ProjectManager {
     
     static var projectsArray = [Projects]()
     
-    let fileName = "Task"
+    let fileName = "Projects"
     let fileExtension = "json"
     
     init(){
         
-        //Checks if the file exists, else it will load the file into memory
-        if(ProjectManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
-            ProjectManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
-        }else{
-            let file = ProjectManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
-            if(!file.isEmpty){
-                ProjectManager.projectsArray = ProjectManager.jsonParser.decodeJSON(jsonString: file) as! [Projects]
+        if(ProjectManager.projectsArray.isEmpty){
+            //Checks if the file exists, else it will load the file into memory
+            if(ProjectManager.fileManager.checkFile(fileName: fileName, fileExtension: fileExtension)){
+                ProjectManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
+            }else{
+                let file = ProjectManager.fileManager.readFile(fileName: fileName, fileExtension: fileExtension)
+                if(!file.isEmpty){
+                    ProjectManager.projectsArray = ProjectManager.jsonParser.decodeJSON(jsonString: file) as! [Projects]
+                }
             }
         }
     }
     
     func add(task: Projects){
         ProjectManager.projectsArray.append(task)
+        save()
     }
     
     func remove(){
@@ -73,6 +78,35 @@ class ProjectManager {
         }
         
         return false
+    }
+    
+    func getIndex(uniqueID: Int) -> Int{
+        
+        var index: Int = 0
+        var counter: Int = 0
+        
+        for project in ProjectManager.projectsArray {
+            if(project.uniqueID == uniqueID){
+                index = counter
+            }
+            counter += 1
+        }
+        
+        return index
+    }
+    
+    func filterByID(uniqueID: Int) -> Projects{
+        
+        var filteredProject: Projects = Projects(uniqueID: 0, name: "", startDate: "", endDate: "", hours: "", description: "", projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
+        
+        for project in ProjectManager.projectsArray {
+            
+            if(project.uniqueID == uniqueID){
+                filteredProject = project
+            }
+        }
+        
+        return filteredProject
     }
     
     func filterByDate(date: String) -> [Projects]{
