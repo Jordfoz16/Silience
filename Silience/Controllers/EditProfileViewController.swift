@@ -37,9 +37,7 @@ class EditProfileViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        print(profileManager.getUser().pictureID)
-        
+                
         if(pictureID != ""){
             let photoManager = PhotoManager()
             photoManager.load()

@@ -1207,6 +1207,7 @@
                     <connections>
                         <outlet property="profileBio" destination="b52-Zc-Y9W" id="cvN-Ha-3Rf"/>
                         <outlet property="profileFirstName" destination="uyv-c5-K75" id="Ytr-md-fwH"/>
+                        <outlet property="profileImage" destination="qok-yq-f5e" id="DF6-ey-1Nt"/>
                         <outlet property="profileSecondName" destination="H17-5j-uVc" id="0PH-if-FCy"/>
                         <outlet property="tableView" destination="zuM-fs-Ffg" id="4bk-Pj-OFd"/>
                     </connections>
