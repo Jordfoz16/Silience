@@ -65,7 +65,7 @@ class CalendarControllerView: UIViewController, UITableViewDataSource {
         if(cellState.isSelected){
             validCell.selectedView.isHidden = false
         }else{
-            validCell.selectedView.isHidden = true
+            //validCell.selectedView.isHidden = true
         }
     }
     
