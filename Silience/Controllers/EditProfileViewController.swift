@@ -53,12 +53,13 @@ class EditProfileViewController: UIViewController {
                 // re-dispatch to the main queue for UI work.
             }
             
-            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { image, _ in
+            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                  resultHandler: { image, _ in
                                                     
-                    // If the request succeeded, show the image view.
-                    guard let image = image else { return }
-                
-                    self.profileImage.image = image
+                                                    // If the request succeeded, show the image view.
+                                                    guard let image = image else { return }
+                                                    
+                                                    self.profileImage.image = image
             })
         }
     }
