@@ -123,6 +123,7 @@ class AddProjectViewController: UIViewController {
         let taskManager = ProjectManager()
         taskManager.add(task: newTask)
         
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func clearTaskArray(_ sender: Any) {

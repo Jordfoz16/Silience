@@ -119,5 +119,7 @@ class EditProjectViewController: UIViewController {
         ProjectManager.projectsArray[projectIndex] = updatedProject
         
         projectManager.save()
+        
+        navigationController?.popViewController(animated: true)
     }
 }

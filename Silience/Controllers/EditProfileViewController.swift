@@ -86,6 +86,8 @@ class EditProfileViewController: UIViewController {
         
         profileManager.updateProfile(profileUpdate: updatedUser)
         profileManager.save()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func updateProfile(){

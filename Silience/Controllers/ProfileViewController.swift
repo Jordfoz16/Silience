@@ -156,9 +156,4 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-    
-    @IBAction func getProfileArray(_ sender: Any) {
-        
-        print(ProfileManager.profile)
-    }
 }
