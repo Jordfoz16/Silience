@@ -75,7 +75,7 @@ class EditProfileViewController: UIViewController {
         guard let destination = segue.destination as? ImageSelectorViewController else { fatalError("Unexpected view controller for segue") }
         
         destination.viewType = .profileSelect
-        destination.testViewController = self
+        destination.editProfileViewController = self
     }
     
     @IBAction func updateProfile(_ sender: Any) {

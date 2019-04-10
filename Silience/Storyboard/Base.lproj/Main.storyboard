@@ -110,7 +110,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hcD-kf-enj"/>
+                    <navigationItem key="navigationItem" title="Home" id="hcD-kf-enj"/>
                     <connections>
                         <outlet property="dailyWord" destination="ief-oI-HmU" id="tGR-aZ-yG1"/>
                     </connections>
@@ -149,7 +149,6 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="2rU-4C-wfR" id="IlP-qF-Vcf"/>
-                                    <segue destination="1xe-eM-UxS" kind="show" id="eA0-nf-gtf"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -644,7 +643,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fd9-EC-Xi4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WXv-mX-Uba"/>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="WXv-mX-Uba"/>
                     <connections>
                         <outlet property="bioTextbox" destination="5jg-f3-XmR" id="nc4-NO-YWp"/>
                         <outlet property="firstNameTextbox" destination="2bn-xS-SXA" id="bTj-Gq-Be5"/>
@@ -1203,7 +1202,7 @@
                         <viewLayoutGuide key="safeArea" id="f5e-ff-zwS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="GVv-1D-Lrd"/>
-                    <navigationItem key="navigationItem" id="IcN-qI-grr"/>
+                    <navigationItem key="navigationItem" title="Profile" id="IcN-qI-grr"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="profileBio" destination="b52-Zc-Y9W" id="cvN-Ha-3Rf"/>
@@ -1238,7 +1237,6 @@
         <image name="paper-clip-icon" width="480" height="480"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Jr-n2-mgM"/>
         <segue reference="h3b-XW-BCI"/>
     </inferredMetricsTieBreakers>
 </document>

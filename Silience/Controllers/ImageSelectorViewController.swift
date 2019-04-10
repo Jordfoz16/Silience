@@ -26,7 +26,7 @@ class ImageSelectorViewController: UICollectionViewController {
     
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
-    var testViewController: EditProfileViewController = EditProfileViewController()
+    var editProfileViewController: EditProfileViewController = EditProfileViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,13 +93,10 @@ class ImageSelectorViewController: UICollectionViewController {
             self.show(imageViewController, sender: self)
             
         }else if(viewType == .profileSelect){
-            let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+//            let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
             
             editProfileViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
-            //editProfileViewController.updateProfile()
-            //navigationController?.popViewController(animated: true)
-            testViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
-            
+            navigationController?.popViewController(animated: true)
         }
     }
     
