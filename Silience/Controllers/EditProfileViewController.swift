@@ -38,7 +38,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print(pictureID)
+        print(profileManager.getUser().pictureID)
         
         if(pictureID != ""){
             let photoManager = PhotoManager()
@@ -71,15 +71,26 @@ class EditProfileViewController: UIViewController {
         return CGSize(width: profileImage.bounds.width * scale, height: profileImage.bounds.height * scale)
     }
     
-    @IBAction func choseProfilePicture(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ImageSelectorViewController") as! ImageSelectorViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? ImageSelectorViewController else { fatalError("Unexpected view controller for segue") }
         
-        nextViewController.viewType = .profileSelect
-        self.show(nextViewController, sender: self)
+        destination.viewType = .profileSelect
+        destination.testViewController = self
     }
     
     @IBAction func updateProfile(_ sender: Any) {
+        let firstName = firstNameTextbox.text
+        let secondName = secondNameTextbox.text
+        let bio = bioTextbox.text
+        let profileID = pictureID
+        
+        let updatedUser: User = User(firstName: firstName!, secondName: secondName!, bio: bio!, pictureID: profileID)
+        
+        profileManager.updateProfile(profileUpdate: updatedUser)
+        profileManager.save()
+    }
+    
+    func updateProfile(){
         let firstName = firstNameTextbox.text
         let secondName = secondNameTextbox.text
         let bio = bioTextbox.text
