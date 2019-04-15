@@ -20,13 +20,13 @@ class ImageSelectorViewController: UICollectionViewController {
     var viewType: viewTypes = .view
     
     var fetchResult: PHFetchResult<PHAsset>!
-    //var assetCollection: PHAssetCollection!
-    //var availableWidth: CGFloat = 0
     
     fileprivate let imageManager = PHCachingImageManager()
     fileprivate var thumbnailSize: CGSize!
     
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    
+    var editProfileViewController: EditProfileViewController = EditProfileViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,24 +93,25 @@ class ImageSelectorViewController: UICollectionViewController {
             self.show(imageViewController, sender: self)
             
         }else if(viewType == .profileSelect){
-            let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
-            
-            //editProfileViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
+//            let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
             
             editProfileViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
-            self.show(editProfileViewController, sender: self)
+            navigationController?.popViewController(animated: true)
         }
     }
     
-//    //Passing the image to the ImageViewController
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let destination = segue.destination as? ImageViewController else { fatalError("Unexpected view controller for segue") }
-//        guard let collectionViewCell = sender as? UICollectionViewCell else { fatalError("Unexpected sender for segue") }
-//
-//        let indexPath = collectionView.indexPath(for: collectionViewCell)!
-//        destination.asset = fetchResult.object(at: indexPath.item)
-//
-//    }
+   //Passing the image to the ImageViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(viewType == .view){
+            guard let collectionViewCell = sender as? UICollectionViewCell else { fatalError("Unexpected sender for segue") }
+            
+            guard let destination = segue.destination as? ImageViewController else { fatalError("Unexpected view controller for segue") }
+            
+            let indexPath = collectionView.indexPath(for: collectionViewCell)!
+            
+            destination.asset = fetchResult.object(at: indexPath.item)
+        }
+    }
 }
 
 extension ImageSelectorViewController: PHPhotoLibraryChangeObserver {

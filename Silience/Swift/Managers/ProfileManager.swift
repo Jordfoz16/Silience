@@ -66,6 +66,7 @@ class ProfileManager{
     }
     
     func getUser() -> User {
+        
         return ProfileManager.profile[0]
     }
 }
