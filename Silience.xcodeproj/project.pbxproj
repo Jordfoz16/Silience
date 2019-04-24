@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1710DEF8225DE4DA009C8D9A /* CustomNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1710DEF7225DE4DA009C8D9A /* CustomNavViewController.swift */; };
+		1723C5E422706B8B0087E79D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723C5E322706B8B0087E79D /* HomeViewController.swift */; };
 		1727A1852227EA6A00C04884 /* DailyWordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727A1842227EA6A00C04884 /* DailyWordsManager.swift */; };
 		1744D439221F2E11000D7F10 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744D438221F2E11000D7F10 /* File.swift */; };
 		179E9D44224B78FB001F7713 /* ImageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E9D43224B78FB001F7713 /* ImageSelectorViewController.swift */; };
@@ -37,6 +38,7 @@
 		1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Silience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170D45B7221D809100A278F3 /* Silience.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Silience.entitlements; sourceTree = "<group>"; };
 		1710DEF7225DE4DA009C8D9A /* CustomNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavViewController.swift; sourceTree = "<group>"; };
+		1723C5E322706B8B0087E79D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1727A1842227EA6A00C04884 /* DailyWordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsManager.swift; sourceTree = "<group>"; };
 		1744D438221F2E11000D7F10 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		179E9D43224B78FB001F7713 /* ImageSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				179E9D43224B78FB001F7713 /* ImageSelectorViewController.swift */,
 				179E9D48224B83F3001F7713 /* ImageViewController.swift */,
 				17BB78FE224E1A6400282E7F /* EditProjectViewController.swift */,
+				1723C5E322706B8B0087E79D /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				1710DEF8225DE4DA009C8D9A /* CustomNavViewController.swift in Sources */,
 				179E9D47224B808F001F7713 /* ImageCollectionViewCell.swift in Sources */,
 				179E9D49224B83F3001F7713 /* ImageViewController.swift in Sources */,
+				1723C5E422706B8B0087E79D /* HomeViewController.swift in Sources */,
 				17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */,
 				179E9D44224B78FB001F7713 /* ImageSelectorViewController.swift in Sources */,
 				17F1BF00223BBF7700C3BF2A /* ProfileManager.swift in Sources */,
