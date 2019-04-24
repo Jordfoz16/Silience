@@ -1171,6 +1171,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="45A-11-JMG"/>
                     <connections>
+                        <outlet property="calendarView" destination="bbS-ce-KJE" id="1VE-5h-mcd"/>
                         <outlet property="lblCompleted" destination="OVI-xX-f8Y" id="s6k-Ht-aBC"/>
                         <outlet property="lblDate" destination="YmO-pl-ZO6" id="R9Z-Ik-UGp"/>
                         <outlet property="lblDay" destination="1fx-dT-dR5" id="Yac-eg-tMh"/>
@@ -1181,6 +1182,8 @@
                         <outlet property="lblWorkingProgress" destination="obb-fx-WYy" id="gEK-qv-6kg"/>
                         <outlet property="lblYear" destination="vCI-VJ-z6E" id="Z2o-st-gQS"/>
                         <outlet property="profilePicture" destination="eO0-9J-sRl" id="ZJV-Ly-ljm"/>
+                        <outlet property="profileView" destination="F3o-vO-8iQ" id="K9F-2C-JG0"/>
+                        <outlet property="wordView" destination="XnE-6y-oz0" id="Fam-PM-fKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYZ-4c-HIT" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,17 +13,19 @@ import PhotosUI
 class HomeViewController: UIViewController {
 
     //Word of the day box
+    @IBOutlet weak var wordView: UIView!
     @IBOutlet weak var lblWordOfTheDay: UILabel!
     @IBOutlet weak var lblWordDate: UILabel!
     
     //Calendar box
+    @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var lblYear: UILabel!
     @IBOutlet weak var lblMonth: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblDay: UILabel!
     
-    
     //Profile box
+    @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var lblWorkingProgress: UILabel!
     @IBOutlet weak var lblFeatured: UILabel!
@@ -41,6 +43,10 @@ class HomeViewController: UIViewController {
         
         //-----------------Word of the day box------------------
         
+        let wordTapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.wordTapped(gesture:)))
+        
+        wordView.addGestureRecognizer(wordTapGesture)
+        
         //Get random word
         lblWordOfTheDay.text = dailyWord.getRandomWord()
         
@@ -48,6 +54,10 @@ class HomeViewController: UIViewController {
         lblWordDate.text = formatter.string(from: date)
         
         //-----------------Calendar box------------------
+        
+        let calendarGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.calendarTapped(gesture:)))
+        
+        calendarView.addGestureRecognizer(calendarGesture)
         
         //Get the month
         formatter.dateFormat = "MMM"
@@ -62,6 +72,10 @@ class HomeViewController: UIViewController {
         lblDate.text = formatter.string(from: date)
         
         //-----------------Profile box------------------
+        
+        let profileGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.profileTapped(gesture:)))
+        
+        profileView.addGestureRecognizer(profileGesture)
         
         loadProfilePicture()
         loadProjects()
@@ -128,5 +142,15 @@ class HomeViewController: UIViewController {
         return CGSize(width: profilePicture.bounds.width * scale, height: profilePicture.bounds.height * scale)
     }
     
+    @objc func wordTapped(gesture: UIGestureRecognizer){
+        print("Word Tap")
+    }
     
+    @objc func calendarTapped(gesture: UIGestureRecognizer){
+        print("Calendar")
+    }
+    
+    @objc func profileTapped(gesture: UIGestureRecognizer){
+        print("Profile")
+    }
 }
