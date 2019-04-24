@@ -144,13 +144,18 @@ class HomeViewController: UIViewController {
     
     @objc func wordTapped(gesture: UIGestureRecognizer){
         print("Word Tap")
+        tabBarController?.selectedIndex = 0
     }
     
     @objc func calendarTapped(gesture: UIGestureRecognizer){
         print("Calendar")
+        
+        tabBarController?.selectedIndex = 1
     }
     
     @objc func profileTapped(gesture: UIGestureRecognizer){
         print("Profile")
+        
+        tabBarController?.selectedIndex = 2
     }
 }
