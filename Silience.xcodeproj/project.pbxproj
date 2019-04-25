@@ -20,7 +20,7 @@
 		17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD54202220236B00AC7711 /* ParseJSON.swift */; };
 		17C4C201223AD03A00BB2311 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4C200223AD03A00BB2311 /* CalendarTableViewCell.swift */; };
 		17D281EB221C63D000F1D86F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281EA221C63D000F1D86F /* AppDelegate.swift */; };
-		17D281ED221C63D000F1D86F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281EC221C63D000F1D86F /* MainViewController.swift */; };
+		17D281ED221C63D000F1D86F /* DailyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D281EC221C63D000F1D86F /* DailyWordViewController.swift */; };
 		17D281F2221C63D000F1D86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F0221C63D000F1D86F /* Main.storyboard */; };
 		17D281F4221C63D100F1D86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F3221C63D100F1D86F /* Assets.xcassets */; };
 		17D281F7221C63D100F1D86F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D281F5221C63D100F1D86F /* LaunchScreen.storyboard */; };
@@ -28,7 +28,7 @@
 		17D7973B22393213000B2F87 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D7973A22393213000B2F87 /* ProfileTableViewCell.swift */; };
 		17D7973E22393520000B2F87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D7973D22393520000B2F87 /* ProfileViewController.swift */; };
 		17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906B2237E03D00FC543D /* CalendarCell.swift */; };
-		17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */; };
+		17E1906E2237E2CC00FC543D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1906D2237E2CC00FC543D /* CalendarViewController.swift */; };
 		17F1BEFD223BBF2700C3BF2A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BEFC223BBF2700C3BF2A /* EditProfileViewController.swift */; };
 		17F1BF00223BBF7700C3BF2A /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F1BEFF223BBF7700C3BF2A /* ProfileManager.swift */; };
 		414A5849A0ABE358080C228A /* Pods_Silience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436FE94AAD18E471EDECFB7 /* Pods_Silience.framework */; };
@@ -51,7 +51,7 @@
 		17C4C200223AD03A00BB2311 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		17D281E7221C63D000F1D86F /* Silience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Silience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D281EA221C63D000F1D86F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		17D281EC221C63D000F1D86F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		17D281EC221C63D000F1D86F /* DailyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordViewController.swift; sourceTree = "<group>"; };
 		17D281F1221C63D000F1D86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17D281F3221C63D100F1D86F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D281F6221C63D100F1D86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		17D7973A22393213000B2F87 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		17D7973D22393520000B2F87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		17E1906B2237E03D00FC543D /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarControllerView.swift; sourceTree = "<group>"; };
+		17E1906D2237E2CC00FC543D /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		17F1BEFC223BBF2700C3BF2A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		17F1BEFF223BBF7700C3BF2A /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		955E8BB4D198D95781E81FA8 /* Pods-Silience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silience.debug.xcconfig"; path = "Target Support Files/Pods-Silience/Pods-Silience.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,9 +92,9 @@
 			children = (
 				1710DEF7225DE4DA009C8D9A /* CustomNavViewController.swift */,
 				17D281FE221C72E800F1D86F /* AddProjectViewController.swift */,
-				17E1906D2237E2CC00FC543D /* CalendarControllerView.swift */,
+				17E1906D2237E2CC00FC543D /* CalendarViewController.swift */,
 				17F1BEFC223BBF2700C3BF2A /* EditProfileViewController.swift */,
-				17D281EC221C63D000F1D86F /* MainViewController.swift */,
+				17D281EC221C63D000F1D86F /* DailyWordViewController.swift */,
 				17D7973D22393520000B2F87 /* ProfileViewController.swift */,
 				179E9D43224B78FB001F7713 /* ImageSelectorViewController.swift */,
 				179E9D48224B83F3001F7713 /* ImageViewController.swift */,
@@ -348,12 +348,12 @@
 				17BD54212220236B00AC7711 /* ParseJSON.swift in Sources */,
 				179E9D44224B78FB001F7713 /* ImageSelectorViewController.swift in Sources */,
 				17F1BF00223BBF7700C3BF2A /* ProfileManager.swift in Sources */,
-				17E1906E2237E2CC00FC543D /* CalendarControllerView.swift in Sources */,
+				17E1906E2237E2CC00FC543D /* CalendarViewController.swift in Sources */,
 				17D281EB221C63D000F1D86F /* AppDelegate.swift in Sources */,
 				17D281FF221C72E800F1D86F /* AddProjectViewController.swift in Sources */,
 				17ACC6582225AC1400EC8FC2 /* ProjectManager.swift in Sources */,
 				1727A1852227EA6A00C04884 /* DailyWordsManager.swift in Sources */,
-				17D281ED221C63D000F1D86F /* MainViewController.swift in Sources */,
+				17D281ED221C63D000F1D86F /* DailyWordViewController.swift in Sources */,
 				17D7973B22393213000B2F87 /* ProfileTableViewCell.swift in Sources */,
 				17BB7901224E395000282E7F /* PhotoManager.swift in Sources */,
 				17E1906C2237E03D00FC543D /* CalendarCell.swift in Sources */,

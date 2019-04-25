@@ -82,6 +82,11 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadProfilePicture()
+        loadProjects()
+    }
+    
     func loadProjects(){
         var workingProgressCount = 0
         var featuredCount = 0
