@@ -15,6 +15,7 @@ class EditProjectViewController: UIViewController {
     @IBOutlet weak var endDateTextbox: UITextField!
     @IBOutlet weak var descriptionTextBox: UITextView!
     @IBOutlet weak var featuredSwitch: UISwitch!
+    @IBOutlet weak var completedSwitch: UISwitch!
     @IBOutlet weak var workloadLabel: UILabel!
     @IBOutlet weak var hoursTextbox: UITextField!
     
@@ -53,6 +54,7 @@ class EditProjectViewController: UIViewController {
         startDateTextbox.text = project.startDate
         endDateTextbox.text = project.endDate
         descriptionTextBox.text = project.description
+        completedSwitch.isOn = project.projectComplete
         featuredSwitch.isOn = project.projectFeatured
         
     }
@@ -111,7 +113,7 @@ class EditProjectViewController: UIViewController {
         let hours = hoursTextbox.text
         let description = descriptionTextBox.text
         let projectType = ProjectType.project
-        let projectComplete = false
+        let projectComplete = completedSwitch.isOn
         let projectFeatured = featuredSwitch.isOn
         
         let updatedProject = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: projectType, projectComplete: projectComplete, projectFeatured: projectFeatured)

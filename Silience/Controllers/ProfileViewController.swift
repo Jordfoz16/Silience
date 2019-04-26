@@ -101,7 +101,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
                     projects.append(project)
                 }
             }else{
-                projects.append(project)
+                if(!project.projectComplete){
+                    projects.append(project)
+                }
             }
         }
         
