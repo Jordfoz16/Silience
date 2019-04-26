@@ -39,33 +39,33 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             profileFirstName.text = user.firstName
             profileSecondName.text = user.secondName
             profileBio.text = user.bio
-        }
-        
-        let pictureID = profileManager.getUser().pictureID
-        
-        if(pictureID != ""){
-            let photoManager = PhotoManager()
-            photoManager.load()
             
-            let asset = photoManager.getPhoto(localID: pictureID)
+            let pictureID = profileManager.getUser().pictureID
             
-            // Prepare the options to pass when fetching the (photo, or video preview) image.
-            let options = PHImageRequestOptions()
-            options.deliveryMode = .highQualityFormat
-            options.isNetworkAccessAllowed = true
-            options.progressHandler = { progress, _, _, _ in
-                // The handler may originate on a background queue, so
-                // re-dispatch to the main queue for UI work.
+            if(pictureID != ""){
+                let photoManager = PhotoManager()
+                photoManager.load()
+                
+                let asset = photoManager.getPhoto(localID: pictureID)
+                
+                // Prepare the options to pass when fetching the (photo, or video preview) image.
+                let options = PHImageRequestOptions()
+                options.deliveryMode = .highQualityFormat
+                options.isNetworkAccessAllowed = true
+                options.progressHandler = { progress, _, _, _ in
+                    // The handler may originate on a background queue, so
+                    // re-dispatch to the main queue for UI work.
+                }
+                
+                PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                      resultHandler: { image, _ in
+                                                        
+                                                        // If the request succeeded, show the image view.
+                                                        guard let image = image else { return }
+                                                        
+                                                        self.profileImage.image = image
+                })
             }
-            
-            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
-                                                  resultHandler: { image, _ in
-                                                    
-                                                    // If the request succeeded, show the image view.
-                                                    guard let image = image else { return }
-                                                    
-                                                    self.profileImage.image = image
-            })
         }
     }
     
@@ -101,7 +101,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
                     projects.append(project)
                 }
             }else{
-                projects.append(project)
+                if(!project.projectComplete){
+                    projects.append(project)
+                }
             }
         }
         

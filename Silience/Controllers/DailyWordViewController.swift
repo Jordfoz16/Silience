@@ -11,7 +11,7 @@ import UserNotifications
 import Photos
 import PhotosUI
 
-class MainViewController: UIViewController {
+class DailyWordViewController: UIViewController {
     
     @IBOutlet weak var dailyWord: UILabel!
     
@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: PHPhotoLibraryChangeObserver {
+extension DailyWordViewController: PHPhotoLibraryChangeObserver {
     /// - Tag: RespondToChanges
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         
