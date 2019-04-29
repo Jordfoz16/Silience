@@ -23,6 +23,7 @@ struct Projects: Codable {
     let projectType: ProjectType
     let projectComplete: Bool
     let projectFeatured: Bool
+    let pictureID: String
 }
 
 class ProjectManager {
@@ -97,7 +98,7 @@ class ProjectManager {
     
     func filterByID(uniqueID: Int) -> Projects{
         
-        var filteredProject: Projects = Projects(uniqueID: 0, name: "", startDate: "", endDate: "", hours: "", description: "", projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
+        var filteredProject: Projects = Projects(uniqueID: 0, name: "", startDate: "", endDate: "", hours: "", description: "", projectType: ProjectType.project, projectComplete: false, projectFeatured: false, pictureID: "")
         
         for project in ProjectManager.projectsArray {
             

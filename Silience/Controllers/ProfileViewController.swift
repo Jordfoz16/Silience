@@ -155,6 +155,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         cell.projectDescription.text = project.description
         cell.uniqueID = project.uniqueID
         
+        if(project.pictureID != ""){
+            let photoManager = PhotoManager()
+            photoManager.load()
+            
+            let asset = photoManager.getPhoto(localID: project.pictureID)
+            
+            // Prepare the options to pass when fetching the (photo, or video preview) image.
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.isNetworkAccessAllowed = true
+            options.progressHandler = { progress, _, _, _ in
+                // The handler may originate on a background queue, so
+                // re-dispatch to the main queue for UI work.
+            }
+            
+            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                  resultHandler: { image, _ in
+                                                    
+                                                    // If the request succeeded, show the image view.
+                                                    guard let image = image else { return }
+                                                    
+                                                    cell.projectImage.image = image
+            })
+        }
         
         return cell
     }
