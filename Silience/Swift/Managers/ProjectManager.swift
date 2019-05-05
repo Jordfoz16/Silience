@@ -70,11 +70,26 @@ class ProjectManager {
         ProjectManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
     }
     
-    func isEvent(date: String) -> Bool {
+    func isProject(date: String) -> Bool {
         
         for project in ProjectManager.projectsArray {
             if(project.startDate == date){
-                return true
+                if(project.projectType == .project){
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    func isDaily(date: String) -> Bool{
+        
+        for project in ProjectManager.projectsArray {
+            if(project.startDate == date){
+                if(project.projectType == .daily){
+                    return true
+                }
             }
         }
         

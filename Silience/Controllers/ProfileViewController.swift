@@ -18,6 +18,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var profileBio: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var featuredButton: UIButton!
+    @IBOutlet weak var workingProgressButton: UIButton!
+    @IBOutlet weak var completedButton: UIButton!
+    
+    let featuredGreen = UIImage(named: "Featured.png")
+    let featuredRed = UIImage(named: "Featured Red.png")
+    let completedGreen = UIImage(named: "Completed.png")
+    let completedRed = UIImage(named: "Completed Red.png")
+    let workingprogressGreen = UIImage(named: "Working Progress.png")
+    let workingprogressRed = UIImage(named: "Working Progress Red.png")
+    
     var projects = [Projects]()
     let profileManager = ProfileManager()
     
@@ -111,20 +122,31 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         tableView.reloadData()
     }
     
+    func clearSelectedButton(){
+        featuredButton.setImage(featuredGreen, for: UIControl.State.normal)
+        workingProgressButton.setImage(workingprogressGreen, for: UIControl.State.normal)
+        completedButton.setImage(completedGreen, for: UIControl.State.normal)
+    }
     
     @IBAction func featuredClicked(_ sender: Any) {
+        clearSelectedButton()
+        featuredButton.setImage(featuredRed, for: UIControl.State.normal)
         filterFeatured = true
         filterCompleted = false
         loadProjects()
     }
     
     @IBAction func workingClicked(_ sender: Any) {
+        clearSelectedButton()
+        workingProgressButton.setImage(workingprogressRed, for: UIControl.State.normal)
         filterFeatured = false
         filterCompleted = false
         loadProjects()
     }
     
     @IBAction func completedClicked(_ sender: Any) {
+        clearSelectedButton()
+        completedButton.setImage(completedRed, for: UIControl.State.normal)
         filterFeatured = false
         filterCompleted = true
         loadProjects()
