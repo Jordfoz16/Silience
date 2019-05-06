@@ -131,9 +131,10 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         
         let project = filteredProjects[indexPath.row]
         
-        cell.projectName.text = project.name
+        cell.projectNamelbl.text = project.name
         cell.projectDescription.text = project.description
-        
+        cell.projectStartDate.text = project.startDate
+        cell.projectEndDate.text = project.endDate
         
         return cell
     }
