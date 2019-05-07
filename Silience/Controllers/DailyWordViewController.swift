@@ -14,8 +14,10 @@ import PhotosUI
 class DailyWordViewController: UIViewController {
     
     @IBOutlet weak var dailyWord: UILabel!
-    
-    var allPhotos: PHFetchResult<PHAsset>!
+
+    @IBOutlet weak var wordImage: UIImageView!
+    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var descriptionText: UITextView!
     
     let taskManager = ProjectManager()
     let dayWord = DailyWordsManager()
@@ -38,25 +40,33 @@ class DailyWordViewController: UIViewController {
         dailyWord.text = dayWord.getRandomWord()
     }
     
-    @IBAction func taskArray(_ sender: Any) {
-        print(ProjectManager.projectsArray)
+    @IBAction func pickImage(_ sender: Any) {
+    
     }
-}
-
-extension DailyWordViewController: PHPhotoLibraryChangeObserver {
-    /// - Tag: RespondToChanges
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
+    
+    @IBAction func saveDaily(_ sender: Any) {
         
-        // Change notifications may originate from a background queue.
-        // Re-dispatch to the main queue before acting on the change,
-        // so you can update the UI.
-        DispatchQueue.main.sync {
-            // Check each of the three top-level fetches for changes.
-            if let changeDetails = changeInstance.changeDetails(for: allPhotos) {
-                // Update the cached fetch result.
-                allPhotos = changeDetails.fetchResultAfterChanges
-                // Don't update the table row that always reads "All Photos."
-            }
-        }
+        let name = nameText.text! + " - " + dailyWord.text!
+        let description = descriptionText.text
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "dd/MM/yyyy"
+        
+        let startDate = formatter.string(from: date)
+        
+        var hasher = Hasher()
+        
+        hasher.combine(name)
+        hasher.combine(startDate)
+        
+        let uniqueID = hasher.finalize()
+        
+        let newDaily: Projects = Projects(uniqueID: uniqueID, name: name, startDate: startDate, endDate: startDate, hours: "0", description: description!, projectType: .daily, projectComplete: false, projectFeatured: false, pictureID: "")
+        
+        let taskManager = ProjectManager()
+        taskManager.add(task: newDaily)
     }
+    
 }

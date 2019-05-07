@@ -91,10 +91,16 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         if(cellState.dateBelongsTo == .thisMonth){
             let cellDate = formatDate(date: cellState.date)
             
-            if(projectManager.isEvent(date: cellDate)){
-                validCell.eventView.isHidden = false
+            if(projectManager.isProject(date: cellDate)){
+                validCell.isProjectView.isHidden = false
             }else{
-                validCell.eventView.isHidden = true
+                validCell.isProjectView.isHidden = true
+            }
+            
+            if(projectManager.isDaily(date: cellDate)){
+                validCell.isDailyView.isHidden = false
+            }else{
+                validCell.isDailyView.isHidden = true
             }
         }
     }
@@ -125,9 +131,10 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         
         let project = filteredProjects[indexPath.row]
         
-        cell.projectName.text = project.name
+        cell.projectNamelbl.text = project.name
         cell.projectDescription.text = project.description
-        
+        cell.projectStartDate.text = project.startDate
+        cell.projectEndDate.text = project.endDate
         
         return cell
     }
@@ -139,7 +146,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         
-        let startDate = formatter.date(from: "01/03/2018")!
+        let startDate = formatter.date(from: "01/04/2019")!
         let endDate = formatter.date(from: "01/12/2020")!
         
         

@@ -15,6 +15,7 @@ class ImageSelectorViewController: UICollectionViewController {
     enum viewTypes {
         case view
         case profileSelect
+        case projectSelect
     }
     
     var viewType: viewTypes = .view
@@ -27,6 +28,7 @@ class ImageSelectorViewController: UICollectionViewController {
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     var editProfileViewController: EditProfileViewController = EditProfileViewController()
+    var editProjectViewController: EditProjectViewController = EditProjectViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,9 +95,12 @@ class ImageSelectorViewController: UICollectionViewController {
             self.show(imageViewController, sender: self)
             
         }else if(viewType == .profileSelect){
-//            let editProfileViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
             
             editProfileViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
+            navigationController?.popViewController(animated: true)
+        }else if(viewType == .projectSelect){
+            
+            editProjectViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
             navigationController?.popViewController(animated: true)
         }
     }

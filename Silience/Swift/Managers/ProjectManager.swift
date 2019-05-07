@@ -23,6 +23,7 @@ struct Projects: Codable {
     let projectType: ProjectType
     let projectComplete: Bool
     let projectFeatured: Bool
+    let pictureID: String
 }
 
 class ProjectManager {
@@ -69,11 +70,26 @@ class ProjectManager {
         ProjectManager.fileManager.writeFile(writeString: "", fileName: fileName, fileExtension: fileExtension)
     }
     
-    func isEvent(date: String) -> Bool {
+    func isProject(date: String) -> Bool {
         
         for project in ProjectManager.projectsArray {
             if(project.startDate == date){
-                return true
+                if(project.projectType == .project){
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    func isDaily(date: String) -> Bool{
+        
+        for project in ProjectManager.projectsArray {
+            if(project.startDate == date){
+                if(project.projectType == .daily){
+                    return true
+                }
             }
         }
         
@@ -97,7 +113,7 @@ class ProjectManager {
     
     func filterByID(uniqueID: Int) -> Projects{
         
-        var filteredProject: Projects = Projects(uniqueID: 0, name: "", startDate: "", endDate: "", hours: "", description: "", projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
+        var filteredProject: Projects = Projects(uniqueID: 0, name: "", startDate: "", endDate: "", hours: "", description: "", projectType: ProjectType.project, projectComplete: false, projectFeatured: false, pictureID: "")
         
         for project in ProjectManager.projectsArray {
             

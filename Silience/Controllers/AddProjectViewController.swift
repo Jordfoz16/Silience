@@ -118,7 +118,7 @@ class AddProjectViewController: UIViewController {
         let uniqueID = hasher.finalize()
         
         //Creating a new task object
-        let newTask: Projects = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: ProjectType.project, projectComplete: false, projectFeatured: false)
+        let newTask: Projects = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: .project, projectComplete: false, projectFeatured: false, pictureID: "")
         
         let taskManager = ProjectManager()
         taskManager.add(task: newTask)

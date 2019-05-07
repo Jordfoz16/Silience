@@ -18,9 +18,10 @@ class EditProjectViewController: UIViewController {
     @IBOutlet weak var completedSwitch: UISwitch!
     @IBOutlet weak var workloadLabel: UILabel!
     @IBOutlet weak var hoursTextbox: UITextField!
-    
+    @IBOutlet weak var chooseImage: UIButton!
     
     var uniqueID: Int = 0
+    var pictureID: String = ""
     
     let projectManager = ProjectManager()
     
@@ -57,6 +58,13 @@ class EditProjectViewController: UIViewController {
         completedSwitch.isOn = project.projectComplete
         featuredSwitch.isOn = project.projectFeatured
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? ImageSelectorViewController else { fatalError("Unexpected view controller for segue") }
+        
+        destination.viewType = .projectSelect
+        destination.editProjectViewController = self
     }
     
     @objc func dateChange(datePicker: UIDatePicker){
@@ -116,7 +124,7 @@ class EditProjectViewController: UIViewController {
         let projectComplete = completedSwitch.isOn
         let projectFeatured = featuredSwitch.isOn
         
-        let updatedProject = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: projectType, projectComplete: projectComplete, projectFeatured: projectFeatured)
+        let updatedProject = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: projectType, projectComplete: projectComplete, projectFeatured: projectFeatured, pictureID: pictureID)
         
         ProjectManager.projectsArray[projectIndex] = updatedProject
         
