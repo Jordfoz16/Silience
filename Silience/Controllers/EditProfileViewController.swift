@@ -34,6 +34,8 @@ class EditProfileViewController: UIViewController {
                 pictureID = user.pictureID
             }
         }
+        
+        firstNameTextbox.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +64,12 @@ class EditProfileViewController: UIViewController {
                                                     self.profileImage.image = image
             })
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstNameTextbox.resignFirstResponder()
+        secondNameTextbox.resignFirstResponder()
+        bioTextbox.resignFirstResponder()
     }
     
     var targetSize: CGSize {

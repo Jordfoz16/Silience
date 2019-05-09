@@ -58,6 +58,7 @@ class EditProjectViewController: UIViewController {
         completedSwitch.isOn = project.projectComplete
         featuredSwitch.isOn = project.projectFeatured
         
+        nameTextbox.becomeFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +66,12 @@ class EditProjectViewController: UIViewController {
         
         destination.viewType = .projectSelect
         destination.editProjectViewController = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextbox.resignFirstResponder()
+        descriptionTextBox.resignFirstResponder()
+        hoursTextbox.resignFirstResponder()
     }
     
     @objc func dateChange(datePicker: UIDatePicker){

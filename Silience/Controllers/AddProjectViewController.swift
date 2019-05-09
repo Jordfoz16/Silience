@@ -64,7 +64,6 @@ class AddProjectViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameTextBox.resignFirstResponder()
         timeTextBox.resignFirstResponder()
-        
     }
     
     @IBAction func changedHours(_ sender: Any) {

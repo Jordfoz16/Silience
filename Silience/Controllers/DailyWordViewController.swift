@@ -38,6 +38,13 @@ class DailyWordViewController: UIViewController {
         content.body = "Every Tuesday at 2pm"
         
         dailyWord.text = dayWord.getRandomWord()
+        
+        nameText.becomeFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameText.resignFirstResponder()
+        descriptionText.resignFirstResponder()
     }
     
     @IBAction func pickImage(_ sender: Any) {

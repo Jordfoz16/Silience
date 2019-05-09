@@ -15,6 +15,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filterLabel: UITextField!
     
     let selectedDateColour = UIColor.black
     let currentMonthColour = UIColor.black
@@ -34,6 +35,10 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         
         tableView.dataSource = self
         tableView.reloadData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        filterLabel.resignFirstResponder()
     }
     
     func setupCalendar() {
