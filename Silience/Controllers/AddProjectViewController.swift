@@ -36,9 +36,6 @@ class AddProjectViewController: UIViewController {
         //Setting the inputs to the date picker
         startDateTextBox.inputView = datePicker
         endDateTextBox.inputView = datePicker
-        
-        //Making the keyboard to show
-        nameTextBox.becomeFirstResponder()
     }
     
     @objc func dateChange(datePicker: UIDatePicker){

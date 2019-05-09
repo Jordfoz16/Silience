@@ -34,8 +34,6 @@ class EditProfileViewController: UIViewController {
                 pictureID = user.pictureID
             }
         }
-        
-        firstNameTextbox.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {

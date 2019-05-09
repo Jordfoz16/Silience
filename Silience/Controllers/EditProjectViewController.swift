@@ -57,8 +57,6 @@ class EditProjectViewController: UIViewController {
         descriptionTextBox.text = project.description
         completedSwitch.isOn = project.projectComplete
         featuredSwitch.isOn = project.projectFeatured
-        
-        nameTextbox.becomeFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
