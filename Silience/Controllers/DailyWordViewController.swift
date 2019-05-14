@@ -18,6 +18,9 @@ class DailyWordViewController: UIViewController {
     @IBOutlet weak var wordImage: UIImageView!
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var dailyWordImage: UIImageView!
+    
+    var pictureID: String = ""
     
     let taskManager = ProjectManager()
     let dayWord = DailyWordsManager()
@@ -40,9 +43,53 @@ class DailyWordViewController: UIViewController {
         dailyWord.text = dayWord.getRandomWord()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print(pictureID)
+        if(pictureID != ""){
+            
+            let photoManager = PhotoManager()
+            photoManager.load()
+            
+            let asset = photoManager.getPhoto(localID: pictureID)
+            
+            // Prepare the options to pass when fetching the (photo, or video preview) image.
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.isNetworkAccessAllowed = true
+            options.progressHandler = { progress, _, _, _ in
+                // The handler may originate on a background queue, so
+                // re-dispatch to the main queue for UI work.
+            }
+            
+            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                  resultHandler: { image, _ in
+                                                    
+                                                    // If the request succeeded, show the image view.
+                                                    guard let image = image else { return }
+                                                    
+                                                    self.dailyWordImage.image = image
+            })
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameText.resignFirstResponder()
         descriptionText.resignFirstResponder()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier != "home"){
+            guard let destination = segue.destination as? ImageSelectorViewController else { fatalError("Unexpected view controller for segue") }
+            
+            destination.viewType = .dailySelect
+            destination.dailyWordViewController = self
+
+        }
+    }
+    
+    var targetSize: CGSize {
+        let scale = UIScreen.main.scale
+        return CGSize(width: dailyWordImage.bounds.width * scale, height: dailyWordImage.bounds.height * scale)
     }
     
     @IBAction func pickImage(_ sender: Any) {
@@ -68,7 +115,7 @@ class DailyWordViewController: UIViewController {
         
         let uniqueID = hasher.finalize()
         
-        let newDaily: Projects = Projects(uniqueID: uniqueID, name: name, startDate: startDate, endDate: startDate, hours: "0", description: description!, projectType: .daily, projectComplete: false, projectFeatured: false, pictureID: "")
+        let newDaily: Projects = Projects(uniqueID: uniqueID, name: name, startDate: startDate, endDate: startDate, hours: "0", description: description!, projectType: .daily, projectComplete: true, projectFeatured: false, pictureID: pictureID)
         
         let taskManager = ProjectManager()
         taskManager.add(task: newDaily)

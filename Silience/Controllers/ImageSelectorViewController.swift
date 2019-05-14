@@ -16,6 +16,7 @@ class ImageSelectorViewController: UICollectionViewController {
         case view
         case profileSelect
         case projectSelect
+        case dailySelect
     }
     
     var viewType: viewTypes = .view
@@ -29,6 +30,7 @@ class ImageSelectorViewController: UICollectionViewController {
     
     var editProfileViewController: EditProfileViewController = EditProfileViewController()
     var editProjectViewController: EditProjectViewController = EditProjectViewController()
+    var dailyWordViewController: DailyWordViewController = DailyWordViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +103,10 @@ class ImageSelectorViewController: UICollectionViewController {
         }else if(viewType == .projectSelect){
             
             editProjectViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
+            navigationController?.popViewController(animated: true)
+        }else if(viewType == .dailySelect){
+            
+            dailyWordViewController.pictureID = fetchResult.object(at: indexPath.item).localIdentifier
             navigationController?.popViewController(animated: true)
         }
     }

@@ -9,7 +9,8 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarViewController: UIViewController, UITableViewDataSource {
+class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
@@ -25,9 +26,15 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     let projectManager = ProjectManager()
     var filteredProjects = [Projects]()
     
+    let thePicker = UIPickerView()
+    
+    let types = ["All", "Projects", "Daily Prompts"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        filterLabel.inputView = thePicker
+        thePicker.delegate = self
         setupCalendar()
     }
     
@@ -39,6 +46,22 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         filterLabel.resignFirstResponder()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return types.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return types[row]
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        filterLabel.text = types[row]
     }
     
     func setupCalendar() {
@@ -93,17 +116,35 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     func handleEventColour(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
         
+        var showProjects = false
+        var showDaily = false
+        
+        if(filterLabel.text == "Projects"){
+            showProjects = true
+            showDaily = false
+        }else if(filterLabel.text == "Daily Prompts"){
+            showProjects = false
+            showDaily = true
+        }else{
+            showProjects = true
+            showDaily = true
+        }
+        
         if(cellState.dateBelongsTo == .thisMonth){
             let cellDate = formatDate(date: cellState.date)
             
             if(projectManager.isProject(date: cellDate)){
-                validCell.isProjectView.isHidden = false
+                if(showProjects){
+                    validCell.isProjectView.isHidden = false
+                }
             }else{
                 validCell.isProjectView.isHidden = true
             }
             
             if(projectManager.isDaily(date: cellDate)){
-                validCell.isDailyView.isHidden = false
+                if(showDaily){
+                    validCell.isDailyView.isHidden = false
+                }
             }else{
                 validCell.isDailyView.isHidden = true
             }
