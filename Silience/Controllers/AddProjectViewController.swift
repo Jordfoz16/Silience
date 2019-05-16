@@ -122,9 +122,4 @@ class AddProjectViewController: UIViewController {
         
         navigationController?.popViewController(animated: true)
     }
-    
-    @IBAction func clearTaskArray(_ sender: Any) {
-        let taskManager = ProjectManager()
-        taskManager.clear()
-    }
 }

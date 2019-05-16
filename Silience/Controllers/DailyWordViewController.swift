@@ -19,6 +19,7 @@ class DailyWordViewController: UIViewController {
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var dailyWordImage: UIImageView!
+    @IBOutlet weak var tickBox: UIImageView!
     
     var pictureID: String = ""
     
@@ -41,6 +42,8 @@ class DailyWordViewController: UIViewController {
         content.body = "Every Tuesday at 2pm"
         
         dailyWord.text = dayWord.getRandomWord()
+        
+        checkForImageSelected()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +73,8 @@ class DailyWordViewController: UIViewController {
                                                     self.dailyWordImage.image = image
             })
         }
+        
+        checkForImageSelected()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,6 +89,14 @@ class DailyWordViewController: UIViewController {
             destination.viewType = .dailySelect
             destination.dailyWordViewController = self
 
+        }
+    }
+    
+    func checkForImageSelected(){
+        if(pictureID != ""){
+            tickBox.image = UIImage(named: "Green Tick")
+        }else{
+            tickBox.image = UIImage(named: "Red Cross")
         }
     }
     
