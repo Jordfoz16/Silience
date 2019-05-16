@@ -19,6 +19,7 @@ class EditProjectViewController: UIViewController {
     @IBOutlet weak var workloadLabel: UILabel!
     @IBOutlet weak var hoursTextbox: UITextField!
     @IBOutlet weak var chooseImage: UIButton!
+    @IBOutlet weak var tickBox: UIImageView!
     
     var uniqueID: Int = 0
     var pictureID: String = ""
@@ -57,7 +58,23 @@ class EditProjectViewController: UIViewController {
         descriptionTextBox.text = project.description
         completedSwitch.isOn = project.projectComplete
         featuredSwitch.isOn = project.projectFeatured
+        pictureID = project.pictureID
         
+        checkForImageSelected()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkForImageSelected()
+        
+        updateWorkLoad()
+    }
+    
+    func checkForImageSelected(){
+        if(pictureID != ""){
+            tickBox.image = UIImage(named: "Green Tick")
+        }else{
+            tickBox.image = UIImage(named: "Red Cross")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +82,12 @@ class EditProjectViewController: UIViewController {
         
         destination.viewType = .projectSelect
         destination.editProjectViewController = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextbox.resignFirstResponder()
+        descriptionTextBox.resignFirstResponder()
+        hoursTextbox.resignFirstResponder()
     }
     
     @objc func dateChange(datePicker: UIDatePicker){
@@ -110,6 +133,42 @@ class EditProjectViewController: UIViewController {
         }
         
         return date
+    }
+    
+    @IBAction func changeTime(_ sender: Any) {
+        updateWorkLoad()
+    }
+    
+    @IBAction func changeStartDate(_ sender: Any) {
+        updateWorkLoad()
+    }
+    
+    @IBAction func changeEndDate(_ sender: Any) {
+        updateWorkLoad()
+    }
+    
+    //Calculates the amount of work a day needed to complete a task
+    func updateWorkLoad(){
+        //Check data has been entered
+        if(hoursTextbox.text == "" || startDateTextbox.text == "" || endDateTextbox.text == ""){
+            return
+        }
+        let hours:Double = Double(hoursTextbox.text!)!
+        
+        //Amount of days between the dates
+        
+        let startDateConvert = stringToDate(dateString: startDateTextbox.text!)
+        let endDateConvert = stringToDate(dateString: endDateTextbox.text!)
+        
+        if(endDateConvert != startDateConvert){
+            let dayGap = (endDateConvert.timeIntervalSince(startDate)) / 60 / 60 / 24
+            let timePerDay = Int((hours/dayGap)*60)
+            
+            workloadLabel.text = String(timePerDay) + " min/day"
+        }else{
+            workloadLabel.text = "N/a"
+        }
+        
     }
     
     @IBAction func updateProject(_ sender: Any) {

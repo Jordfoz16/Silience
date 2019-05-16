@@ -10,12 +10,16 @@ import UIKit
 import Photos
 import PhotosUI
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstNameTextbox: UITextField!
     @IBOutlet weak var secondNameTextbox: UITextField!
     @IBOutlet weak var bioTextbox: UITextView!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var tickBox: UIImageView!
+    
+    var activeField: UITextField?
+
     
     let profileManager = ProfileManager()
     
@@ -23,6 +27,8 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.bioTextbox.delegate = self as? UITextViewDelegate
         
         if(profileManager.profileCreated()){
             let user = profileManager.getUser()
@@ -34,6 +40,8 @@ class EditProfileViewController: UIViewController {
                 pictureID = user.pictureID
             }
         }
+        
+        checkForImageSelected()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +70,14 @@ class EditProfileViewController: UIViewController {
                                                     self.profileImage.image = image
             })
         }
+        
+        checkForImageSelected()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        firstNameTextbox.resignFirstResponder()
+        secondNameTextbox.resignFirstResponder()
+        bioTextbox.resignFirstResponder()
     }
     
     var targetSize: CGSize {
@@ -90,6 +106,14 @@ class EditProfileViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func checkForImageSelected(){
+        if(pictureID != ""){
+            tickBox.image = UIImage(named: "Green Tick")
+        }else{
+            tickBox.image = UIImage(named: "Red Cross")
+        }
+    }
+    
     func updateProfile(){
         let firstName = firstNameTextbox.text
         let secondName = secondNameTextbox.text
@@ -100,6 +124,20 @@ class EditProfileViewController: UIViewController {
         
         profileManager.updateProfile(profileUpdate: updatedUser)
         profileManager.save()
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField){
+        activeField = nil
     }
     
 }

@@ -16,6 +16,7 @@ class AddProjectViewController: UIViewController {
     @IBOutlet weak var endDateTextBox: UITextField!
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var descriptionTextBox: UITextView!
+    @IBOutlet weak var featuredSwitch: UISwitch!
     
     private var datePicker: UIDatePicker?
     private var startDate: Date = Date.init()
@@ -36,9 +37,6 @@ class AddProjectViewController: UIViewController {
         //Setting the inputs to the date picker
         startDateTextBox.inputView = datePicker
         endDateTextBox.inputView = datePicker
-        
-        //Making the keyboard to show
-        nameTextBox.becomeFirstResponder()
     }
     
     @objc func dateChange(datePicker: UIDatePicker){
@@ -64,7 +62,6 @@ class AddProjectViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameTextBox.resignFirstResponder()
         timeTextBox.resignFirstResponder()
-        
     }
     
     @IBAction func changedHours(_ sender: Any) {
@@ -118,16 +115,11 @@ class AddProjectViewController: UIViewController {
         let uniqueID = hasher.finalize()
         
         //Creating a new task object
-        let newTask: Projects = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: .project, projectComplete: false, projectFeatured: false, pictureID: "")
+        let newTask: Projects = Projects(uniqueID: uniqueID, name: name!, startDate: startDate!, endDate: endDate!, hours: hours!, description: description!, projectType: .project, projectComplete: false, projectFeatured: featuredSwitch.isOn, pictureID: "")
         
         let taskManager = ProjectManager()
         taskManager.add(task: newTask)
         
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func clearTaskArray(_ sender: Any) {
-        let taskManager = ProjectManager()
-        taskManager.clear()
     }
 }

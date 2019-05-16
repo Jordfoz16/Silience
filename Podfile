@@ -11,5 +11,6 @@ target 'Silience' do
 
   # Pods for Silience
   pod 'JTAppleCalendar', '~> 7.0'
+  pod 'IQKeyboardManagerSwift'
 
 end
