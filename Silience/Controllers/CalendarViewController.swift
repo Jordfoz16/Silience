@@ -28,7 +28,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
     
     let thePicker = UIPickerView()
     
-    let types = ["All", "Projects", "Daily Prompts"]
+    let types = ["All", "Projects", "Daily Prompts", "Events"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
