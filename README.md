@@ -4,8 +4,7 @@ University Project - Silience
 ## Installing
 
 ### Cocoa Pods
-Follow the instructions from the cocoa pods website:
-  > sudo gem install cocoapods
+Follow the instructions from the cocoa pods website or type 'sudo gem install cocoapods'
 
 ### Clone Github
   1. Download the github file and extracted the zip file
