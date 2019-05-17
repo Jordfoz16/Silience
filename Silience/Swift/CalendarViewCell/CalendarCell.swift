@@ -14,4 +14,5 @@ class CalendarCell: JTAppleCell {
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var isProjectView: UIView!
     @IBOutlet weak var isDailyView: UIView!
+    @IBOutlet weak var isTodayView: UIView!
 }

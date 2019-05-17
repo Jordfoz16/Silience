@@ -8,6 +8,8 @@
 
 import UIKit
 import JTAppleCalendar
+import Photos
+import PhotosUI
 
 class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -26,9 +28,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
     let projectManager = ProjectManager()
     var filteredProjects = [Projects]()
     
+    var tempImage = UIImageView()
+    
     let thePicker = UIPickerView()
     
-    let types = ["All", "Projects", "Daily Prompts"]
+    let types = ["All", "Projects", "Daily Prompts", "Events"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +134,15 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
             showDaily = true
         }
         
+        let todayDate = formatDate(date: Date())
+        let cellDate = formatDate(date: cellState.date)
+        
+        if(todayDate == cellDate){
+            validCell.isTodayView.isHidden = false
+        }else{
+            validCell.isTodayView.isHidden = true
+        }
+        
         if(cellState.dateBelongsTo == .thisMonth){
             let cellDate = formatDate(date: cellState.date)
             
@@ -182,7 +195,39 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
         cell.projectStartDate.text = project.startDate
         cell.projectEndDate.text = project.endDate
         
+        tempImage = cell.projectImage
+        
+        if(project.pictureID != ""){
+            let photoManager = PhotoManager()
+            photoManager.load()
+            
+            let asset = photoManager.getPhoto(localID: project.pictureID)
+            
+            // Prepare the options to pass when fetching the (photo, or video preview) image.
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.isNetworkAccessAllowed = true
+            options.progressHandler = { progress, _, _, _ in
+                // The handler may originate on a background queue, so
+                // re-dispatch to the main queue for UI work.
+            }
+            
+            PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                  resultHandler: { image, _ in
+                                                    
+                                                    // If the request succeeded, show the image view.
+                                                    guard let image = image else { return }
+                                                    
+                                                    cell.projectImage.image = image
+            })
+        }
+        
         return cell
+    }
+    
+    var targetSize: CGSize {
+        let scale = UIScreen.main.scale
+        return CGSize(width: tempImage.bounds.width * scale, height: tempImage.bounds.height * scale)
     }
 }
 
