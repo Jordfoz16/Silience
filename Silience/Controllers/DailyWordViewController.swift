@@ -47,7 +47,7 @@ class DailyWordViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(pictureID)
+        
         if(pictureID != ""){
             
             let photoManager = PhotoManager()
@@ -132,6 +132,14 @@ class DailyWordViewController: UIViewController {
         
         let taskManager = ProjectManager()
         taskManager.add(task: newDaily)
+        
+        nameText.text = ""
+        descriptionText.text = ""
+        dailyWordImage.image = UIImage(named: "")
+        pictureID = ""
+        
+        
+        self.tabBarController?.selectedIndex = 0
     }
     
 }

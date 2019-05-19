@@ -77,6 +77,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
         calendarView.visibleDates { (visableDates) in
             self.setupViewOfCalendar(from: visableDates)
         }
+        
+        calendarView.scrollToDate(Date(), animateScroll: false)
     }
     
     //Added the year and month to the view
@@ -220,6 +222,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
                                                     
                                                     cell.projectImage.image = image
             })
+        }else{
+            cell.projectImage.image = UIImage(named: "")
         }
         
         return cell
@@ -237,7 +241,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         
-        let startDate = formatter.date(from: "01/04/2019")!
+        let startDate = formatter.date(from: "01/01/1970")!
         let endDate = formatter.date(from: "01/12/2020")!
         
         

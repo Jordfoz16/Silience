@@ -177,6 +177,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         cell.projectDescription.text = project.description
         cell.uniqueID = project.uniqueID
         
+        print(project.pictureID)
+        
         if(project.pictureID != ""){
             let photoManager = PhotoManager()
             photoManager.load()
@@ -200,6 +202,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
                                                     
                                                     cell.projectImage.image = image
             })
+        }else{
+            cell.projectImage.image = UIImage(named: "")
         }
         
         return cell
