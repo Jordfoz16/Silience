@@ -98,14 +98,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
 
         if(cellState.isSelected){
             validCell.selectedView.isHidden = false
-            validCell.isDailyView.isHidden = false
-            validCell.isTodayView.isHidden = false
-            validCell.isProjectView.isHidden = false
         }else{
             validCell.selectedView.isHidden = true
-            validCell.isDailyView.isHidden = true
-            validCell.isTodayView.isHidden = true
-            validCell.isProjectView.isHidden = true
         }
     }
     
@@ -127,6 +121,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
     //Addes colours to the cells that have project on them
     func handleEventColour(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
+        
+        validCell.isDailyView.isHidden = true
+        validCell.isProjectView.isHidden = true
+        validCell.isTodayView.isHidden = true
+        validCell.selectedView.isHidden = true
         
         var showProjects = false
         var showDaily = false
