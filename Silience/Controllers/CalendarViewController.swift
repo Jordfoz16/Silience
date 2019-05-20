@@ -98,8 +98,14 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
 
         if(cellState.isSelected){
             validCell.selectedView.isHidden = false
+            validCell.isDailyView.isHidden = false
+            validCell.isTodayView.isHidden = false
+            validCell.isProjectView.isHidden = false
         }else{
             validCell.selectedView.isHidden = true
+            validCell.isDailyView.isHidden = true
+            validCell.isTodayView.isHidden = true
+            validCell.isProjectView.isHidden = true
         }
     }
     
