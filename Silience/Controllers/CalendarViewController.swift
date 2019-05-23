@@ -122,6 +122,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UIPickerV
     func handleEventColour(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else { return }
         
+        validCell.isDailyView.isHidden = true
+        validCell.isProjectView.isHidden = true
+        validCell.isTodayView.isHidden = true
+        validCell.selectedView.isHidden = true
+        
         var showProjects = false
         var showDaily = false
         
